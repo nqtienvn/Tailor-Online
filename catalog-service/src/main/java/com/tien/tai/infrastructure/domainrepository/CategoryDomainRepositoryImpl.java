@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 public class CategoryDomainRepositoryImpl implements CategoryDomainRepository {
     @Override
     public CategoryResponse createCategory(CategoryCreateCmd categoryCreateCmd) {
-        return null;
+
     }
 }
