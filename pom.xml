@@ -10,8 +10,6 @@
     <modules>
         <module>catalog-service</module>
         <module>common</module>
-        <module>tien</module>
-        <module>customer-service</module>
     </modules>
     <properties>
         <java.version>21</java.version>

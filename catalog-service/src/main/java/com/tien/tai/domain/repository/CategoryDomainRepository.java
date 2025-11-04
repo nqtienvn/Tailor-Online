@@ -1,8 +1,7 @@
 package com.tien.tai.domain.repository;
 
-import com.tien.tai.application.dto.response.CategoryResponse;
-import com.tien.tai.domain.command.CategoryCreateCmd;
+import com.tien.tai.domain.model.CategoryDomain;
 
 public interface CategoryDomainRepository {
-    CategoryResponse createCategory(CategoryCreateCmd categoryCreateCmd);
+    CategoryDomain save(CategoryDomain category);
 }
