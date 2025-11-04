@@ -1,4 +1,4 @@
-## 🏗️ Cấu trúc Microservice
+##  Cấu trúc Microservice
 
 ### 1. Thành phần chính
 
@@ -16,7 +16,7 @@
 
 ---
 
-## 🧩 Cấu trúc DDD (Domain-Driven Design)
+##  Cấu trúc DDD (Domain-Driven Design)
 
 ### 1. Các tầng chính
 
@@ -50,7 +50,7 @@
 
 ---
 
-🧠 **Tóm gọn:**
+ **Tóm gọn:**
 
 > Microservice đảm bảo tính tách biệt và mở rộng;
 > DDD đảm bảo kiến trúc trong từng service rõ ràng, dễ bảo trì, dễ mở rộng và phản ánh đúng nghiệp vụ thực tế.
