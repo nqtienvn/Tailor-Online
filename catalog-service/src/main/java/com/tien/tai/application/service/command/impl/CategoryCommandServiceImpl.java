@@ -20,11 +20,23 @@ public class CategoryCommandServiceImpl implements CategoryCommandService {
 
     @Override
     public CategoryResponse create(CategoryRequest categoryRequest) {
-        //mapper tu request sang thang cmd
+        CategoryDomain category = new CategoryDomain(categoryCommandMapper.from(categoryRequest));
+        return categoryMapperDTO.from(categoryDomainRepository
+                .save(category));
+    }
+
+    @Override
+    public CategoryResponse update(CategoryRequest categoryRequest, Integer id) {
         CategoryCmd categoryCmd = categoryCommandMapper.from(categoryRequest);
-        CategoryDomain domainCategory = CategoryDomain.create(categoryCmd);
-        CategoryDomain savedDomainCategory = categoryDomainRepository.save(domainCategory);
-        return categoryMapperDTO.from(savedDomainCategory);
-        //xong ty nua lai mapper nguoc lai bang thang mapper trong DTO dẻ trả ra response, LÁY CATEGORY TRONG ĐÚNG THẰNG DOMAIN
+        CategoryDomain domainFind = categoryDomainRepository.findById(id);
+        domainFind.update(categoryCmd);
+        return categoryMapperDTO.from(categoryDomainRepository.save(domainFind));
+    }
+
+    @Override
+    public void softDelete(Integer id) {
+        CategoryDomain domainFind = categoryDomainRepository.findById(id);
+        domainFind.softDelete();
+        categoryDomainRepository.softDelete(domainFind);
     }
 }

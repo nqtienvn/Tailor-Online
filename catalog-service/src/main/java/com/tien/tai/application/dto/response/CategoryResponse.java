@@ -8,4 +8,5 @@ import lombok.*;
 public class CategoryResponse {
     Integer id;
     String name;
+    Boolean isDeleted;
 }

@@ -11,11 +11,10 @@ public interface CategoryResource {
     @PostMapping()
     ApiResponse<CategoryResponse> createCategory(@RequestBody CategoryRequest categoryRequest);
     //admin
-    @PutMapping()
-    ApiResponse<CategoryResponse> updateCategory(@RequestBody CategoryRequest categoryRequest);
+    @PutMapping("/{id}")
+    ApiResponse<CategoryResponse> updateCategory(@RequestBody CategoryRequest categoryRequest, @PathVariable(name = "id") Integer id);
     //admin
     @DeleteMapping("/{id}")
     ApiResponse<String> deleteCategory(@PathVariable(name = "id") Integer id);
-
 
 }

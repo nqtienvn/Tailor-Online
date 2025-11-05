@@ -5,26 +5,29 @@ import com.tien.tai.domain.command.CategoryCmd;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Getter
-@Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@Setter(AccessLevel.PRIVATE)
+@Getter
 public class CategoryDomain {
     Integer id;
     String name;
+    Boolean isDeleted;
 
-    public static CategoryDomain create(CategoryCmd cmd) {
-        return CategoryDomain.builder().name(cmd.getName()).build();
+    public CategoryDomain(CategoryCmd cmd) {
+        this.name = cmd.getName();
+        this.isDeleted = false;
     }
 
-    public CategoryDomain update(CategoryCmd cmd) {
-        return null;
+    public void update(CategoryCmd cmd) {
+        this.name = cmd.getName();
+        this.isDeleted = false;
     }
 
-    public void delete(Integer id) {
-
+    public void softDelete() {
+        this.isDeleted = true;
     }
 }
 
