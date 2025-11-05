@@ -1,15 +1,21 @@
 package com.tien.tai.presentation.rest;
 
 import com.tien.common.dto.response.ApiResponse;
-import com.tien.tai.application.dto.request.CategoryCreateRequest;
+import com.tien.tai.application.dto.request.CategoryRequest;
 import com.tien.tai.application.dto.response.CategoryResponse;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/catalog-service/category")
 public interface CategoryResource {
     //admin
     @PostMapping()
-    ApiResponse<CategoryResponse> createCategory(@RequestBody CategoryCreateRequest categoryCreateRequest);
+    ApiResponse<CategoryResponse> createCategory(@RequestBody CategoryRequest categoryRequest);
+    //admin
+    @PutMapping()
+    ApiResponse<CategoryResponse> updateCategory(@RequestBody CategoryRequest categoryRequest);
+    //admin
+    @DeleteMapping("/{id}")
+    ApiResponse<String> deleteCategory(@PathVariable(name = "id") Integer id);
+
+
 }

@@ -9,6 +9,6 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CategoryCreateRequest {
+public class CategoryRequest {
     String name;
 }

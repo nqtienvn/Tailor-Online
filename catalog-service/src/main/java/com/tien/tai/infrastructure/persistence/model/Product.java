@@ -5,13 +5,15 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name = "products")
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
-public class Product {
+public class Product extends Auditor{
     @Id
     @GeneratedValue
     Integer id;
@@ -21,4 +23,6 @@ public class Product {
     @Column(columnDefinition = "TEXT")
     String description;
     Double basePrice; //công may cơ bản
+    Boolean status = true;
+    Boolean isDeleted = false;
 }
