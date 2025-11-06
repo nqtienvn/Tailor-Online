@@ -1,12 +1,12 @@
 package com.tien.tai.infrastructure.persistence.mapper.impl;
 
+import com.tien.common.mapper.catalogservice.ToEntityDomain;
 import com.tien.tai.domain.model.FabricDomain;
-import com.tien.tai.infrastructure.persistence.mapper.FabricMapper;
 import com.tien.tai.infrastructure.persistence.model.Fabric;
 import org.springframework.stereotype.Component;
 
 @Component
-public class FabricMapperImpl implements FabricMapper {
+public class FabricMapperImpl implements ToEntityDomain<Fabric, FabricDomain> {
     @Override
     public Fabric toEntity(FabricDomain fabric) {
         return Fabric.builder()

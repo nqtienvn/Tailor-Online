@@ -2,10 +2,9 @@ package com.tien.tai.presentation.rest.impl;
 
 import com.tien.common.controller.catalogservice.CatalogResourceCommon;
 import com.tien.common.dto.response.ApiResponse;
-import com.tien.common.service.catalogservice.ServiceCatalogCommon;
+import com.tien.common.service.catalogservice.CatalogServiceCommand;
 import com.tien.tai.application.dto.request.ProductRequest;
 import com.tien.tai.application.dto.response.ProductResponse;
-import com.tien.tai.application.service.command.impl.ProductCommandServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,14 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 @RequestMapping("/catalog-service/product")
 public class ProductResourceImpl implements CatalogResourceCommon<ProductResponse, ProductRequest, Integer> {
-    private final ServiceCatalogCommon<ProductResponse, ProductRequest, Integer> serviceCatalogCommon;
+    private final CatalogServiceCommand<ProductResponse, ProductRequest, Integer> catalogServiceCommand;
 
     @Override
     public ApiResponse<ProductResponse> create(ProductRequest productRequest) {
         return ApiResponse.<ProductResponse>builder()
                 .code(200)
                 .message("add product successfully")
-                .result(serviceCatalogCommon.create(productRequest))
+                .result(catalogServiceCommand.create(productRequest))
                 .build();
     }
 
@@ -30,13 +29,13 @@ public class ProductResourceImpl implements CatalogResourceCommon<ProductRespons
         return ApiResponse.<ProductResponse>builder()
                 .code(200)
                 .message("update product successfully")
-                .result(serviceCatalogCommon.update(productRequest, id))
+                .result(catalogServiceCommand.update(productRequest, id))
                 .build();
     }
 
     @Override
     public ApiResponse<String> delete(Integer id) {
-        serviceCatalogCommon.softDelete(id);
+        catalogServiceCommand.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("deleted product successfully")
@@ -45,7 +44,7 @@ public class ProductResourceImpl implements CatalogResourceCommon<ProductRespons
 
     @Override
     public ApiResponse<String> inActive(Integer id) {
-        serviceCatalogCommon.inActive(id);
+        catalogServiceCommand.inActive(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("in active product successfully")
@@ -54,7 +53,7 @@ public class ProductResourceImpl implements CatalogResourceCommon<ProductRespons
 
     @Override
     public ApiResponse<String> active(Integer id) {
-        serviceCatalogCommon.active(id);
+        catalogServiceCommand.active(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("active product successfully")

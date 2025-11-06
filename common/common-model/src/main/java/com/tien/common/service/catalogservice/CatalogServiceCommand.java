@@ -1,6 +1,6 @@
 package com.tien.common.service.catalogservice;
 
-public interface ServiceCatalogCommon<T, F, I> {
+public interface CatalogServiceCommand<T, F, I> {
     T create(F request);
 
     T update(F request, I id);

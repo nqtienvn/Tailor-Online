@@ -17,7 +17,9 @@ public enum ErrorCode {
      * DB: 5
      * excel: 7
      * category: 11
+     * product
      */
+
     CATEGORY_NOT_FOUND(11, "CATEGORY NOT FOUND", HttpStatus.NOT_FOUND),
     USER_NOT_FOUND(1, "USER NOT FOUND", HttpStatus.NOT_FOUND),
     PASS_INCORRECT(0, "PASSWORD INCORRECT", HttpStatus.BAD_REQUEST),

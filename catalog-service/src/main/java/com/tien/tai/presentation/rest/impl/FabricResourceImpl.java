@@ -1,39 +1,41 @@
 package com.tien.tai.presentation.rest.impl;
 
+import com.tien.common.controller.catalogservice.CatalogResourceCommon;
 import com.tien.common.dto.response.ApiResponse;
+import com.tien.common.service.catalogservice.CatalogServiceCommand;
 import com.tien.tai.application.dto.request.FabricRequest;
 import com.tien.tai.application.dto.response.FabricResponse;
-import com.tien.tai.application.service.command.FabricCommandService;
-import com.tien.tai.presentation.rest.FabricResource;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/catalog-service/fabric")
 @RequiredArgsConstructor
-public class FabricResourceImpl implements FabricResource {
-    private final FabricCommandService fabricCommandService;
+public class FabricResourceImpl implements CatalogResourceCommon<FabricResponse, FabricRequest, Integer> {
+    private final CatalogServiceCommand<FabricResponse, FabricRequest, Integer> catalogServiceCommand;
 
     @Override
-    public ApiResponse<FabricResponse> createFabric(FabricRequest fabricRequest) {
+    public ApiResponse<FabricResponse> create(FabricRequest fabricRequest) {
         return ApiResponse.<FabricResponse>builder()
                 .code(201)
                 .message("add fabric successfully")
-                .result(fabricCommandService.create(fabricRequest))
+                .result(catalogServiceCommand.create(fabricRequest))
                 .build();
     }
 
     @Override
-    public ApiResponse<FabricResponse> updateFabric(FabricRequest fabricRequest, Integer id) {
+    public ApiResponse<FabricResponse> update(FabricRequest fabricRequest, Integer id) {
         return ApiResponse.<FabricResponse>builder()
                 .code(200)
                 .message("update fabric successfully")
-                .result(fabricCommandService.update(fabricRequest, id))
+                .result(catalogServiceCommand.update(fabricRequest, id))
                 .build();
     }
 
     @Override
-    public ApiResponse<String> deleteFabric(Integer id) {
-        fabricCommandService.softDelete(id);
+    public ApiResponse<String> delete(Integer id) {
+        catalogServiceCommand.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("delete fabric successfully")
@@ -42,7 +44,7 @@ public class FabricResourceImpl implements FabricResource {
 
     @Override
     public ApiResponse<String> inActive(Integer id) {
-        fabricCommandService.inActive(id);
+        catalogServiceCommand.inActive(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("in active fabric successfully")
@@ -51,7 +53,7 @@ public class FabricResourceImpl implements FabricResource {
 
     @Override
     public ApiResponse<String> active(Integer id) {
-        fabricCommandService.active(id);
+        catalogServiceCommand.active(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("active fabric successfully")

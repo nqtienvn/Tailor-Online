@@ -15,8 +15,8 @@ public class ProductMapperImpl implements ToEntityDomain<Product, ProductDomain>
                 .categoryId(domain.getCategoryId())
                 .basePrice(domain.getBasePrice())
                 .fabricId(domain.getFabricId())
-                .status(true)
-                .isDeleted(false)
+                .status(domain.getStatus())
+                .isDeleted(domain.getIsDeleted())
                 .description(domain.getDescription())
                 .build();
     }
