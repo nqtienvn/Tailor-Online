@@ -54,3 +54,4 @@
 
 > Microservice đảm bảo tính tách biệt và mở rộng;
 > DDD đảm bảo kiến trúc trong từng service rõ ràng, dễ bảo trì, dễ mở rộng và phản ánh đúng nghiệp vụ thực tế.
+> Sample code trong Catalog-service
