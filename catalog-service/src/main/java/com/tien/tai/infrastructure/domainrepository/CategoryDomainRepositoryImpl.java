@@ -1,6 +1,8 @@
 package com.tien.tai.infrastructure.domainrepository;
 
-import com.tien.common.domain.repository.CatalogDomainRepositoryCommon;
+import com.tien.common.domain.repository.DomainRepositoryCommon;
+import com.tien.common.exception.AppException;
+import com.tien.common.exception.error.NotFoundError;
 import com.tien.common.mapper.catalogservice.ToEntityDomain;
 import com.tien.tai.domain.model.CategoryDomain;
 import com.tien.tai.infrastructure.persistence.model.Category;
@@ -10,7 +12,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @RequiredArgsConstructor
-public class CategoryDomainRepositoryImpl implements CatalogDomainRepositoryCommon<CategoryDomain, Integer> {
+public class CategoryDomainRepositoryImpl implements DomainRepositoryCommon<CategoryDomain, Integer> {
     private final CategoryRepository categoryRepository;
     private final ToEntityDomain<Category, CategoryDomain> toEntityDomain;
 
@@ -22,7 +24,8 @@ public class CategoryDomainRepositoryImpl implements CatalogDomainRepositoryComm
 
     @Override
     public CategoryDomain findById(Integer id) {
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new RuntimeException("category not found"));
+        Category category = categoryRepository.findById(id).orElseThrow(() ->
+                new RuntimeException(new AppException(NotFoundError.NOT_FOUND)));
         return toEntityDomain.toDomain(category);
     }
 

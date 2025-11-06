@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-public interface CatalogResourceCommon<T, F, I> {
+public interface ResourceCommon<T, F, I> {
     //admin
     @PostMapping()
     ApiResponse<T> create(@RequestBody F request);

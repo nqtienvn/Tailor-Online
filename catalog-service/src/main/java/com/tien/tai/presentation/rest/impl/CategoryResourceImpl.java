@@ -1,8 +1,8 @@
 package com.tien.tai.presentation.rest.impl;
 
-import com.tien.common.controller.catalogservice.CatalogResourceCommon;
+import com.tien.common.controller.catalogservice.ResourceCommon;
 import com.tien.common.dto.response.ApiResponse;
-import com.tien.common.service.catalogservice.CatalogServiceCommand;
+import com.tien.common.service.ServiceCommandCommon;
 import com.tien.tai.application.dto.request.CategoryRequest;
 import com.tien.tai.application.dto.response.CategoryResponse;
 import lombok.RequiredArgsConstructor;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/catalog-service/category")
 @RequiredArgsConstructor
-public class CategoryResourceImpl implements CatalogResourceCommon<CategoryResponse, CategoryRequest, Integer> {
-    private final CatalogServiceCommand<CategoryResponse, CategoryRequest, Integer> catalogServiceCommand;
+public class CategoryResourceImpl implements ResourceCommon<CategoryResponse, CategoryRequest, Integer> {
+    private final ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> serviceCommandCommon;
 
     @Override
     public ApiResponse<CategoryResponse> create(CategoryRequest categoryRequest) {
         return ApiResponse.<CategoryResponse>builder()
                 .code(200)
                 .message("create category successfully")
-                .result(catalogServiceCommand.create(categoryRequest))
+                .result(serviceCommandCommon.create(categoryRequest))
                 .build();
     }
 
@@ -29,13 +29,13 @@ public class CategoryResourceImpl implements CatalogResourceCommon<CategoryRespo
         return ApiResponse.<CategoryResponse>builder()
                 .code(200)
                 .message("update category successfully")
-                .result(catalogServiceCommand.update(categoryRequest, id))
+                .result(serviceCommandCommon.update(categoryRequest, id))
                 .build();
     }
 
     @Override
     public ApiResponse<String> delete(Integer id) {
-        catalogServiceCommand.softDelete(id);
+        serviceCommandCommon.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("delete category successfully")

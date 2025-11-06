@@ -1,7 +1,7 @@
 package com.tien.tai.application.service.command.impl;
 
-import com.tien.common.domain.repository.CatalogDomainRepositoryCommon;
-import com.tien.common.service.catalogservice.CatalogServiceCommand;
+import com.tien.common.domain.repository.DomainRepositoryCommon;
+import com.tien.common.service.ServiceCommandCommon;
 import com.tien.tai.application.dto.mapper.CategoryMapperDTO;
 import com.tien.tai.application.dto.request.CategoryRequest;
 import com.tien.tai.application.dto.response.CategoryResponse;
@@ -13,31 +13,31 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryCommandImpl implements CatalogServiceCommand<CategoryResponse, CategoryRequest, Integer> {
+public class CategoryCommandCommonImpl implements ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> {
     private final CategoryCommandMapper categoryCommandMapper;
     private final CategoryMapperDTO categoryMapperDTO;
-    private final CatalogDomainRepositoryCommon<CategoryDomain, Integer> catalogDomainRepositoryCommon;
+    private final DomainRepositoryCommon<CategoryDomain, Integer> domainRepositoryCommon;
 
     @Override
     public CategoryResponse create(CategoryRequest categoryRequest) {
         CategoryDomain category = new CategoryDomain(categoryCommandMapper.from(categoryRequest));
-        return categoryMapperDTO.from(catalogDomainRepositoryCommon
+        return categoryMapperDTO.from(domainRepositoryCommon
                 .save(category));
     }
 
     @Override
     public CategoryResponse update(CategoryRequest categoryRequest, Integer id) {
         CategoryCmd categoryCmd = categoryCommandMapper.from(categoryRequest);
-        CategoryDomain domainFind = catalogDomainRepositoryCommon.findById(id);
+        CategoryDomain domainFind = domainRepositoryCommon.findById(id);
         domainFind.update(categoryCmd);
-        return categoryMapperDTO.from(catalogDomainRepositoryCommon.save(domainFind));
+        return categoryMapperDTO.from(domainRepositoryCommon.save(domainFind));
     }
 
     @Override
     public void softDelete(Integer id) {
-        CategoryDomain domainFind = catalogDomainRepositoryCommon.findById(id);
+        CategoryDomain domainFind = domainRepositoryCommon.findById(id);
         domainFind.softDelete();
-        catalogDomainRepositoryCommon.softDelete(domainFind);
+        domainRepositoryCommon.softDelete(domainFind);
     }
 
     @Override
