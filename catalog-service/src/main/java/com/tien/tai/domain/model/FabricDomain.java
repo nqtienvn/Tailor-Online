@@ -33,15 +33,16 @@ public class FabricDomain {
     }
 
     public void update(FabricCmd cmd) {
-        this.name = cmd.getName();
+        if (cmd.getName() != null) this.name = cmd.getName();
+        if (cmd.getColor() != null) this.color = cmd.getColor();
+        if (cmd.getPricePerMeter() != null) this.pricePerMeter = cmd.getPricePerMeter();
+        if (cmd.getDescription() != null) this.description = cmd.getDescription();
+        if (cmd.getStockQuantity() != null) this.stockQuantity = cmd.getStockQuantity();
+        if (cmd.getImageUrl() != null) this.imageUrl = cmd.getImageUrl();
         this.isDeleted = false;
         this.status = true;
-        this.color = cmd.getColor();
-        this.pricePerMeter = cmd.getPricePerMeter();
-        this.description = cmd.getDescription();
-        this.stockQuantity = cmd.getStockQuantity();
-        this.imageUrl = cmd.getImageUrl();
     }
+
 
     public void softDelete() {
         this.isDeleted = true;

@@ -22,7 +22,7 @@ public class CategoryDomain {
     }
 
     public void update(CategoryCmd cmd) {
-        this.name = cmd.getName();
+        if (cmd.getName() != null) this.name = cmd.getName();
         this.isDeleted = false;
     }
 

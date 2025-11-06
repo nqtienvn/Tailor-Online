@@ -1,9 +1,7 @@
 package com.tien.tai.infrastructure.persistence.model;
 
 import jakarta.persistence.*;
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,9 +11,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @EntityListeners(AuditingEntityListener.class)
 @Getter
 @Setter
-public class Product extends Auditor{
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class Product extends Auditor {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
     Integer id;
     Integer categoryId;
     Integer fabricId;
