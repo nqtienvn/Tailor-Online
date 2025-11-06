@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class FabricCommandCommonImpl implements ServiceCommandCommon<FabricResponse, FabricRequest, Integer> {
+public class FabricCommandImpl implements ServiceCommandCommon<FabricResponse, FabricRequest, Integer> {
     private final FabricCommandMapper fabricCommandMapper;
     private final FabricMapperDTO fabricMapperDTO;
     private final DomainRepositoryCommon<FabricDomain, Integer> domainRepositoryCommon;

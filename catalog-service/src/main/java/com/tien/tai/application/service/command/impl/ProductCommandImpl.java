@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ProductCommandCommonImpl implements ServiceCommandCommon<ProductResponse, ProductRequest, Integer> {
+public class ProductCommandImpl implements ServiceCommandCommon<ProductResponse, ProductRequest, Integer> {
     private final ProductCommandMapper productCommandMapper;
     private final DomainRepositoryCommon<ProductDomain, Integer> domainRepositoryCommon;
     private final ProductMapperDTO productMapperDTO;

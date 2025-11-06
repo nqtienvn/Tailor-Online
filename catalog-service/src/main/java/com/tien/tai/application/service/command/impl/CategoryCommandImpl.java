@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryCommandCommonImpl implements ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> {
+public class CategoryCommandImpl implements ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> {
     private final CategoryCommandMapper categoryCommandMapper;
     private final CategoryMapperDTO categoryMapperDTO;
     private final DomainRepositoryCommon<CategoryDomain, Integer> domainRepositoryCommon;
