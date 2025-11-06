@@ -1,4 +1,4 @@
-package com.tien.common.response;
+package com.tien.common.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
