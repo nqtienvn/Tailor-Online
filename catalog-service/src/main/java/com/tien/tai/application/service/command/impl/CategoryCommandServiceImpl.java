@@ -7,20 +7,20 @@ import com.tien.tai.application.dto.request.CategoryRequest;
 import com.tien.tai.application.dto.response.CategoryResponse;
 import com.tien.tai.application.mapper.CategoryCommandMapper;
 import com.tien.tai.domain.command.CategoryCmd;
-import com.tien.tai.domain.model.CategoryDomain;
+import com.tien.tai.domain.model.Category;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class CategoryCommandImpl implements ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> {
+public class CategoryCommandServiceImpl implements ServiceCommandCommon<CategoryResponse, CategoryRequest, Integer> {
     private final CategoryCommandMapper categoryCommandMapper;
     private final CategoryMapperDTO categoryMapperDTO;
-    private final DomainRepositoryCommon<CategoryDomain, Integer> domainRepositoryCommon;
+    private final DomainRepositoryCommon<Category, Integer> domainRepositoryCommon;
 
     @Override
     public CategoryResponse create(CategoryRequest categoryRequest) {
-        CategoryDomain category = new CategoryDomain(categoryCommandMapper.from(categoryRequest));
+        Category category = new Category(categoryCommandMapper.from(categoryRequest));
         return categoryMapperDTO.from(domainRepositoryCommon
                 .save(category));
     }
@@ -28,14 +28,14 @@ public class CategoryCommandImpl implements ServiceCommandCommon<CategoryRespons
     @Override
     public CategoryResponse update(CategoryRequest categoryRequest, Integer id) {
         CategoryCmd categoryCmd = categoryCommandMapper.from(categoryRequest);
-        CategoryDomain domainFind = domainRepositoryCommon.findById(id);
+        Category domainFind = domainRepositoryCommon.findById(id);
         domainFind.update(categoryCmd);
         return categoryMapperDTO.from(domainRepositoryCommon.save(domainFind));
     }
 
     @Override
     public void softDelete(Integer id) {
-        CategoryDomain domainFind = domainRepositoryCommon.findById(id);
+        Category domainFind = domainRepositoryCommon.findById(id);
         domainFind.softDelete();
         domainRepositoryCommon.softDelete(domainFind);
     }

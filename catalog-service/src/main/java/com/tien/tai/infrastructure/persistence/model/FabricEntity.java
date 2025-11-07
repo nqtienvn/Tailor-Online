@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "products")
+@Table(name = "fabrics")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EntityListeners(AuditingEntityListener.class)
 @Getter
@@ -14,16 +14,18 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product extends Auditor {
+public class FabricEntity extends Auditor{
     @Id
-    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    Integer categoryId;
-    Integer fabricId;
     String name;
     @Column(columnDefinition = "TEXT")
     String description;
-    Double basePrice; //công may cơ bản
+    String color;
+    Double pricePerMeter; //giá tiền trên một mét
+    @Column(columnDefinition = "VARCHAR(100)")
+    String imageUrl;
+    Double stockQuantity; //số lượng mét vải
     Boolean status = true;
     Boolean isDeleted = false;
 }

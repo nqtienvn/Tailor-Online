@@ -1,40 +1,72 @@
 package com.tien.tai.infrastructure.domainrepository;
 
-import com.tien.common.domain.repository.DomainRepositoryCommon;
 import com.tien.common.exception.AppException;
 import com.tien.common.exception.error.NotFoundError;
 import com.tien.common.mapper.catalogservice.ToEntityDomain;
-import com.tien.tai.domain.model.CategoryDomain;
-import com.tien.tai.infrastructure.persistence.model.Category;
+import com.tien.tai.application.dto.mapper.entitytoresponse.MapperEntityToResponse;
+import com.tien.tai.application.dto.response.CategoryResponse;
+import com.tien.tai.application.dto.response.ProductResponse;
+import com.tien.tai.domain.model.Category;
+import com.tien.tai.domain.repository.CategoryDomainRepository;
+import com.tien.tai.infrastructure.persistence.model.CategoryEntity;
+import com.tien.tai.infrastructure.persistence.model.ProductEntity;
 import com.tien.tai.infrastructure.persistence.repository.CategoryRepository;
+import com.tien.tai.infrastructure.persistence.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.CollectionUtils;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
-public class CategoryDomainRepositoryImpl implements DomainRepositoryCommon<CategoryDomain, Integer> {
+public class CategoryDomainRepositoryImpl implements CategoryDomainRepository {
     private final CategoryRepository categoryRepository;
-    private final ToEntityDomain<Category, CategoryDomain> toEntityDomain;
+    private final ToEntityDomain<CategoryEntity, Category> toEntityDomain;
+    private final ProductRepository productRepository;
+    private final MapperEntityToResponse mapperEntityToResponse;
 
     @Override
-    public CategoryDomain save(CategoryDomain category) {
-        Category savedEntity = categoryRepository.save(toEntityDomain.toEntity(category));
+    public Category save(Category category) {
+        CategoryEntity savedEntity = categoryRepository.save(toEntityDomain.toEntity(category));
         return toEntityDomain.toDomain(savedEntity);
     }
 
     @Override
-    public CategoryDomain findById(Integer id) {
-        Category category = categoryRepository.findById(id).orElseThrow(() ->
+    public Category findById(Integer id) {
+        CategoryEntity categoryEntity = categoryRepository.findById(id).orElseThrow(() ->
                 new RuntimeException(new AppException(NotFoundError.NOT_FOUND)));
-        return toEntityDomain.toDomain(category);
+        return toEntityDomain.toDomain(categoryEntity);
     }
 
     @Override
-    public void softDelete(CategoryDomain categoryDomain) {
-        categoryRepository.save(toEntityDomain.toEntity(categoryDomain));
+    public void softDelete(Category category) {
+        categoryRepository.save(toEntityDomain.toEntity(category));
     }
 
     @Override
-    public void saveStatus(CategoryDomain domain) {
+    public void saveStatus(Category domain) {
+    }
+
+    @Override
+    public void enrichDTO(List<CategoryResponse> categoryDtos) {
+        if (categoryDtos == null || categoryDtos.isEmpty()) return;
+
+        List<Integer> categoryIds = categoryDtos.stream()
+                .map(CategoryResponse::getId)
+                .filter(Objects::nonNull)
+                .collect(Collectors.toList());
+
+        List<ProductEntity> products = productRepository.findByCategoryIdIn(categoryIds);
+        List<ProductResponse> productDtos = mapperEntityToResponse.toProductDTOs(products);
+
+        Map<Integer, List<ProductResponse>> productsByCategory = productDtos.stream()
+                .collect(Collectors.groupingBy(ProductResponse::getCategoryId));
+
+        for (CategoryResponse category : categoryDtos) {
+            List<ProductResponse> relatedProducts = productsByCategory.getOrDefault(category.getId(), List.of());
+            category.setProducts(relatedProducts);
+        }
     }
 }

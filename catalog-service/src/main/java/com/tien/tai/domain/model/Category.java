@@ -11,12 +11,12 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @Setter(AccessLevel.PRIVATE)
 @Getter
-public class CategoryDomain {
+public class Category {
     Integer id;
     String name;
     Boolean isDeleted;
 
-    public CategoryDomain(CategoryCmd cmd) {
+    public Category(CategoryCmd cmd) {
         this.name = cmd.getName();
         this.isDeleted = false;
     }
