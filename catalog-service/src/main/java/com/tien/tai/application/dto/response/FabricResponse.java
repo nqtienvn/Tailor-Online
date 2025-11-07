@@ -3,6 +3,8 @@ package com.tien.tai.application.dto.response;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -19,4 +21,5 @@ public class FabricResponse {
     Double stockQuantity;
     Boolean status;
     Boolean isDeleted;
+    private List<ProductResponse> products;
 }

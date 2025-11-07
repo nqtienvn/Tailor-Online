@@ -35,8 +35,8 @@ public class CategoryQueryServiceImpl implements ServiceQueryCommon<PageDTO<Cate
             return PageDTO.empty();
         }
         List<Category> categories = this.toEntityDomain.toDomain(this.categoryRepositoryCustom.search(searchQuery));
-        List<CategoryResponse> CategoryDtos = this.categoryMapperDTO.toDTO(categories);
-        this.categoryDomainRepository.enrichDTO(CategoryDtos);
-        return new PageDTO<>(CategoryDtos, request.getPageIndex(), request.getPageSize(), total);
+        List<CategoryResponse> categoryDtos = this.categoryMapperDTO.toDTO(categories);
+        this.categoryDomainRepository.enrichDTO(categoryDtos);
+        return new PageDTO<>(categoryDtos, request.getPageIndex(), request.getPageSize(), total);
     }
 }

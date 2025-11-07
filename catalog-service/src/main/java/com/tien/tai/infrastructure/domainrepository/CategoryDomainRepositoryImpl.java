@@ -14,9 +14,10 @@ import com.tien.tai.infrastructure.persistence.repository.CategoryRepository;
 import com.tien.tai.infrastructure.persistence.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.CollectionUtils;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Repository

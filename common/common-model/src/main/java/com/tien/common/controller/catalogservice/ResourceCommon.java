@@ -24,4 +24,5 @@ public interface ResourceCommon<T, F, I> {
 
     @PostMapping("/active/{id}")
     ApiResponse<String> active(@PathVariable(name = "id") I id);
+
 }
