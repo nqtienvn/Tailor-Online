@@ -4,8 +4,8 @@ import com.tien.common.exception.AppException;
 import com.tien.common.exception.error.NotFoundError;
 import com.tien.common.mapper.catalogservice.ToEntityDomain;
 import com.tien.tai.application.dto.mapper.entitytoresponse.MapperEntityToResponse;
-import com.tien.tai.application.dto.response.CategoryResponse;
-import com.tien.tai.application.dto.response.ProductResponse;
+import com.tien.tai.application.dto.response.CategoryDTO;
+import com.tien.tai.application.dto.response.ProductDTO;
 import com.tien.tai.domain.model.Category;
 import com.tien.tai.domain.repository.CategoryDomainRepository;
 import com.tien.tai.infrastructure.persistence.model.CategoryEntity;
@@ -51,22 +51,22 @@ public class CategoryDomainRepositoryImpl implements CategoryDomainRepository {
     }
 
     @Override
-    public void enrichDTO(List<CategoryResponse> categoryDtos) {
+    public void enrichDTO(List<CategoryDTO> categoryDtos) {
         if (categoryDtos == null || categoryDtos.isEmpty()) return;
 
         List<Integer> categoryIds = categoryDtos.stream()
-                .map(CategoryResponse::getId)
+                .map(CategoryDTO::getId)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
         List<ProductEntity> products = productRepository.findByCategoryIdIn(categoryIds);
-        List<ProductResponse> productDtos = mapperEntityToResponse.toProductDTOs(products);
+        List<ProductDTO> productDtos = mapperEntityToResponse.toProductDTOs(products);
 
-        Map<Integer, List<ProductResponse>> productsByCategory = productDtos.stream()
-                .collect(Collectors.groupingBy(ProductResponse::getCategoryId));
+        Map<Integer, List<ProductDTO>> productsByCategory = productDtos.stream()
+                .collect(Collectors.groupingBy(ProductDTO::getCategoryId));
 
-        for (CategoryResponse category : categoryDtos) {
-            List<ProductResponse> relatedProducts = productsByCategory.getOrDefault(category.getId(), List.of());
+        for (CategoryDTO category : categoryDtos) {
+            List<ProductDTO> relatedProducts = productsByCategory.getOrDefault(category.getId(), List.of());
             category.setProducts(relatedProducts);
         }
     }
