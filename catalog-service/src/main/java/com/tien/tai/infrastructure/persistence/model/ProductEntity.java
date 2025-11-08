@@ -1,5 +1,6 @@
 package com.tien.tai.infrastructure.persistence.model;
 
+import com.tien.common.entity.Auditor;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;

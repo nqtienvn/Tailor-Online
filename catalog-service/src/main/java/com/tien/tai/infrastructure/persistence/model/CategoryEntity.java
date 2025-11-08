@@ -1,5 +1,6 @@
 package com.tien.tai.infrastructure.persistence.model;
 
+import com.tien.common.entity.Auditor;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -14,7 +15,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CategoryEntity extends Auditor{
+public class CategoryEntity extends Auditor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
