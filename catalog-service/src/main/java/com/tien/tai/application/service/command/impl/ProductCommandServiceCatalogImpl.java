@@ -31,6 +31,11 @@ public class ProductCommandServiceCatalogImpl implements ServiceCatalogCommandCo
     }
 
     @Override
+    public ProductDTO detail(Integer id) {
+        return productMapperDTO.from(domainRepositoryCommon.findById(id));
+    }
+
+    @Override
     public void softDelete(Integer id) {
         Product findProduct = domainRepositoryCommon.findById(id);
         findProduct.softDelete();

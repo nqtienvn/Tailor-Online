@@ -34,6 +34,11 @@ public class CategoryCommandServiceCatalogImpl implements ServiceCatalogCommandC
     }
 
     @Override
+    public CategoryDTO detail(Integer id) {
+        return categoryMapperDTO.from(domainRepositoryCommon.findById(id));
+    }
+
+    @Override
     public void softDelete(Integer id) {
         Category domainFind = domainRepositoryCommon.findById(id);
         domainFind.softDelete();

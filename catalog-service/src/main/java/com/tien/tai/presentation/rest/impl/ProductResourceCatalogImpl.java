@@ -39,6 +39,15 @@ public class ProductResourceCatalogImpl implements ProductResourceCatalog {
     }
 
     @Override
+    public ApiResponse<ProductDTO> detail(Integer id) {
+        return ApiResponse.<ProductDTO>builder()
+                .code(200)
+                .message("get product successfully")
+                .result(serviceCatalogCommandCommon.detail(id))
+                .build();
+    }
+
+    @Override
     public ApiResponse<String> delete(Integer id) {
         serviceCatalogCommandCommon.softDelete(id);
         return ApiResponse.<String>builder()

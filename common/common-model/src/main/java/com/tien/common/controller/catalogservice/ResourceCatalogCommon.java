@@ -1,10 +1,7 @@
 package com.tien.common.controller.catalogservice;
 
 import com.tien.common.dto.response.ApiResponse;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 public interface ResourceCatalogCommon<T, F, I> {
     //admin
@@ -14,6 +11,9 @@ public interface ResourceCatalogCommon<T, F, I> {
     //admin
     @PostMapping("/{id}")
     ApiResponse<T> update(@RequestBody F request, @PathVariable(name = "id") I id);
+
+    @GetMapping("/{id}")
+    ApiResponse<T> detail(@PathVariable(name = "id") I id);
 
     //admin
     @DeleteMapping("/{id}")
