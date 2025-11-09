@@ -35,4 +35,9 @@ public class CustomerResourceImpl implements CustomerResource {
         customerCommandService.active(id);
         return ApiResponse.<String>builder().code(200).message("active successfully").build();
     }
+
+    @Override
+    public ApiResponse<CustomerDTO> detail(Integer id) {
+        return ApiResponse.<CustomerDTO>builder().code(200).message("get customers successfully").result(customerCommandService.detail(id)).build();
+    }
 }

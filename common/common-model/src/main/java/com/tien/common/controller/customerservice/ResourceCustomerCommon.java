@@ -1,6 +1,7 @@
 package com.tien.common.controller.customerservice;
 
 import com.tien.common.dto.response.ApiResponse;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,4 +21,6 @@ public interface ResourceCustomerCommon<Tdto, Tcreaterequest, Tupdaterequest, Ti
     @PostMapping("/active/{id}")
     ApiResponse<String> active(@PathVariable(name = "id") Tid id);
 
+    @GetMapping("/{id}")
+    ApiResponse<Tdto> detail(@PathVariable(name = "id") Tid id);
 }

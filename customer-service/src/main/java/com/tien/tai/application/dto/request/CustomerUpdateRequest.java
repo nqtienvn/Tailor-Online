@@ -16,7 +16,7 @@ public class CustomerUpdateRequest {
     String fullName;
     String phoneNumber;
     //    String email;
-    Gender gender;
+    String gender;
     LocalDate dateOfBirth;
     String note;
     Boolean isTemporary;
