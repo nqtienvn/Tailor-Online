@@ -1,12 +1,9 @@
 package com.tien.tai.application.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.tien.tai.infrastructor.persistence.model.Gender;
+import com.tien.tai.infrastructor.persistence.model.AddressType;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
-import java.util.List;
 
 @Getter
 @Setter
@@ -15,13 +12,13 @@ import java.util.List;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CustomerDTO {
+public class AddressDTO {
     Integer id;
-    String fullName;
-    String phoneNumber;
-    String email;
-    Gender gender;
-    LocalDate dateOfBirth;
-    String note;
-    List<AddressDTO> addresses;
+    Integer customerId;
+    String addressLine;
+    String city;
+    String district;
+    String ward;
+    AddressType addressType;
+    Boolean isDefault;
 }
