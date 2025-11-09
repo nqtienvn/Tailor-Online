@@ -4,7 +4,6 @@ import com.tien.tai.application.dto.mapper.CustomerMapperDTO;
 import com.tien.tai.application.dto.request.CustomerCreateRequest;
 import com.tien.tai.application.dto.request.CustomerUpdateRequest;
 import com.tien.tai.application.dto.response.CustomerDTO;
-import com.tien.tai.application.mapper.MapperRequestCommand;
 import com.tien.tai.application.mapper.handon.MapperToCmd;
 import com.tien.tai.application.service.CustomerCommandService;
 import com.tien.tai.domain.command.CustomerCreateCmd;
@@ -20,6 +19,7 @@ public class CustomerCommandServiceImpl implements CustomerCommandService {
     private final MapperToCmd mapperRequestCommand;
     private final CustomerDomainRepository customerDomainRepository;
     private final CustomerMapperDTO customerMapperDTO;
+
 
     @Override
     public CustomerDTO create(CustomerCreateRequest request) {
@@ -55,4 +55,5 @@ public class CustomerCommandServiceImpl implements CustomerCommandService {
         domainFind.active();
         customerDomainRepository.softDelete(domainFind);
     }
+
 }

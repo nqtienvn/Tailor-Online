@@ -3,14 +3,13 @@ package com.tien.tai.infrastructor.persistence.model;
 import com.tien.common.entity.Auditor;
 import jakarta.persistence.*;
 import jdk.jfr.Description;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 @Entity
-@Table
+@Table(name = "addresses")
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder

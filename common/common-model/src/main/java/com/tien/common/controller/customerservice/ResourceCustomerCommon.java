@@ -23,4 +23,5 @@ public interface ResourceCustomerCommon<Tdto, Tcreaterequest, Tupdaterequest, Ti
 
     @GetMapping("/{id}")
     ApiResponse<Tdto> detail(@PathVariable(name = "id") Tid id);
+
 }
