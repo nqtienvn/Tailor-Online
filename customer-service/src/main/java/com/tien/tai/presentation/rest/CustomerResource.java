@@ -2,10 +2,8 @@ package com.tien.tai.presentation.rest;
 
 import com.tien.common.controller.customerservice.ResourceCustomerCommon;
 import com.tien.common.dto.response.ApiResponse;
-import com.tien.tai.application.dto.request.AddressCreateRequest;
-import com.tien.tai.application.dto.request.AddressUpdateRequest;
-import com.tien.tai.application.dto.request.CustomerCreateRequest;
-import com.tien.tai.application.dto.request.CustomerUpdateRequest;
+import com.tien.common.dto.response.PagingResponse;
+import com.tien.tai.application.dto.request.*;
 import com.tien.tai.application.dto.response.AddressDTO;
 import com.tien.tai.application.dto.response.CustomerDTO;
 import org.springframework.web.bind.annotation.*;
@@ -26,4 +24,7 @@ public interface CustomerResource extends ResourceCustomerCommon<CustomerDTO, Cu
 
     @DeleteMapping("/addresses/{id}")
     ApiResponse<Boolean> delete(@PathVariable(name = "id") Integer id);
+
+    @GetMapping("/filter")
+    PagingResponse<CustomerDTO> search(CustomerSearchRequest request);
 }

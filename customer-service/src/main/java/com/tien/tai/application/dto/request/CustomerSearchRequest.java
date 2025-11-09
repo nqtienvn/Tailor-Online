@@ -1,22 +1,19 @@
 package com.tien.tai.application.dto.request;
 
+import com.tien.common.dto.request.PagingRequest;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+@EqualsAndHashCode(callSuper = true)
+@Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class CustomerUpdateRequest {
+public class CustomerSearchRequest extends PagingRequest {
     String fullName;
     String phoneNumber;
-    //    String email;
-    String gender;
+    String email;
+    String gender; //cái gender cần xử lý ở body luôn à
     LocalDate dateOfBirth;
-    String note;
     Boolean isTemporary;
 }

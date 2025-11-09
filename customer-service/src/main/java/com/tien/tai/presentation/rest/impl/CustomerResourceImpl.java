@@ -1,14 +1,13 @@
 package com.tien.tai.presentation.rest.impl;
 
 import com.tien.common.dto.response.ApiResponse;
-import com.tien.tai.application.dto.request.AddressCreateRequest;
-import com.tien.tai.application.dto.request.AddressUpdateRequest;
-import com.tien.tai.application.dto.request.CustomerCreateRequest;
-import com.tien.tai.application.dto.request.CustomerUpdateRequest;
+import com.tien.common.dto.response.PagingResponse;
+import com.tien.tai.application.dto.request.*;
 import com.tien.tai.application.dto.response.AddressDTO;
 import com.tien.tai.application.dto.response.CustomerDTO;
 import com.tien.tai.application.service.AddressCommandService;
 import com.tien.tai.application.service.CustomerCommandService;
+import com.tien.tai.application.service.CustomerQueryService;
 import com.tien.tai.presentation.rest.CustomerResource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +19,7 @@ import java.util.List;
 public class CustomerResourceImpl implements CustomerResource {
     private final CustomerCommandService customerCommandService;
     private final AddressCommandService addressCommandService;
+    private final CustomerQueryService customerQueryService;
 
     @Override
     public ApiResponse<CustomerDTO> create(CustomerCreateRequest request) {
@@ -101,5 +101,10 @@ public class CustomerResourceImpl implements CustomerResource {
                 .message("delete address successfully successfully")
                 .result(addressCommandService.delete(id))
                 .build();
+    }
+
+    @Override
+    public PagingResponse<CustomerDTO> search(CustomerSearchRequest request) {
+        return PagingResponse.of(this.customerQueryService.search(request));
     }
 }
