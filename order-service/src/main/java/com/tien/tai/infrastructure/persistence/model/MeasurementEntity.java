@@ -28,5 +28,8 @@ public class MeasurementEntity extends Auditor {
     Double sleeveLength;
     Double trouserLength;
 
+    Boolean status = true;
+    Boolean isDeleted = false;
+
     int orderID;
 }

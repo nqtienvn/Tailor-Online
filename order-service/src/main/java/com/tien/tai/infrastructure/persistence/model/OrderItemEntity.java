@@ -26,6 +26,8 @@ public class OrderItemEntity extends Auditor {
     Double price;
     String fabricType;
 
+    Boolean status = true;
+    Boolean isDeleted = false;
 
     int orderID;
 }

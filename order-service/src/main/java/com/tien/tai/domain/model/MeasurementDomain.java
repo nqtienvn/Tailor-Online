@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class MeasurementDomain {
+    int id;
 
     Double chest;
     Double waist;

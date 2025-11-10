@@ -1,6 +1,15 @@
 package com.tien.tai.domain.model;
 
 import com.tien.tai.domain.command.OrderItemCmd;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class OrderItemDomain {
     Integer id;

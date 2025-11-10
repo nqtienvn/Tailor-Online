@@ -30,6 +30,8 @@ public class OrderEntity extends Auditor {
     String phone;
     String address;
 
+    Boolean isDeleted = false;
+
     @Enumerated(EnumType.STRING)
     OrderStatus status;
 
