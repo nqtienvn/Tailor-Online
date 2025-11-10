@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FabricResourceCatalogImpl implements FabricResourceCatalog {
     private final ServiceCatalogCommandCommon<FabricDTO, FabricRequest, Integer> serviceCatalogCommandCommon;
     private final ServiceQueryCommon<PageDTO<FabricDTO>, FabricSearchRequest> serviceQueryCommon;
+
     @Override
 
     public ApiResponse<FabricDTO> create(FabricRequest fabricRequest) {
@@ -35,6 +36,15 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
                 .code(200)
                 .message("update fabric successfully")
                 .result(serviceCatalogCommandCommon.update(fabricRequest, id))
+                .build();
+    }
+
+    @Override
+    public ApiResponse<FabricDTO> detail(Integer id) {
+        return ApiResponse.<FabricDTO>builder()
+                .code(200)
+                .message("get fabric successfully")
+                .result(serviceCatalogCommandCommon.detail(id))
                 .build();
     }
 

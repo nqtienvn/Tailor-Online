@@ -5,6 +5,8 @@ public interface ServiceCustomerCommandCommon<Tdto, Tcreaterequest, Tupdatereque
 
     Tdto update(Tupdaterequest request, Iid id);
 
+    Tdto detail(Iid id);
+
     void inActive(Iid id);
 
     void active(Iid id);

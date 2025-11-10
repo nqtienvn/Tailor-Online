@@ -31,6 +31,11 @@ public class FabricCommandServiceCatalogImpl implements ServiceCatalogCommandCom
     }
 
     @Override
+    public FabricDTO detail(Integer id) {
+        return fabricMapperDTO.from(domainRepositoryCommon.findById(id));
+    }
+
+    @Override
     public void softDelete(Integer id) {
         Fabric fabricDelete = domainRepositoryCommon.findById(id);
         fabricDelete.softDelete();

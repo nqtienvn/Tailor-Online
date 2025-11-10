@@ -5,6 +5,8 @@ public interface ServiceCatalogCommandCommon<T, F, I> {
 
     T update(F request, I id);
 
+    T detail(I id);
+
     void softDelete(I id);
 
     void inActive(I id);

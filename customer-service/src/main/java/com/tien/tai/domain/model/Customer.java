@@ -3,6 +3,8 @@ package com.tien.tai.domain.model;
 import com.tien.tai.domain.command.CustomerCreateCmd;
 import com.tien.tai.domain.command.CustomerUpdateCmd;
 import com.tien.tai.infrastructor.persistence.model.Gender;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

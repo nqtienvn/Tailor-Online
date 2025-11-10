@@ -39,6 +39,15 @@ public class CategoryResourceCatalogImpl implements CategoryResourceCatalog {
     }
 
     @Override
+    public ApiResponse<CategoryDTO> detail(Integer id) {
+        return ApiResponse.<CategoryDTO>builder()
+                .code(200)
+                .message("get category by successfully")
+                .result(serviceCatalogCommandCommon.detail(id))
+                .build();
+    }
+
+    @Override
     public ApiResponse<String> delete(Integer id) {
         serviceCatalogCommandCommon.softDelete(id);
         return ApiResponse.<String>builder()

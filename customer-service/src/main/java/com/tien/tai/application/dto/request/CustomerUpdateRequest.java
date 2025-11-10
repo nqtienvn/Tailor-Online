@@ -1,6 +1,5 @@
 package com.tien.tai.application.dto.request;
 
-import com.tien.tai.infrastructor.persistence.model.Gender;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -16,7 +15,7 @@ public class CustomerUpdateRequest {
     String fullName;
     String phoneNumber;
     //    String email;
-    Gender gender;
+    String gender;
     LocalDate dateOfBirth;
     String note;
     Boolean isTemporary;

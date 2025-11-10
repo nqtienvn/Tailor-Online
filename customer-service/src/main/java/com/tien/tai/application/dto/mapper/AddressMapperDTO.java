@@ -1,15 +1,13 @@
 package com.tien.tai.application.dto.mapper;
 
 import com.tien.tai.application.dto.response.AddressDTO;
-import com.tien.tai.application.dto.response.CustomerDTO;
 import com.tien.tai.domain.model.Address;
-import com.tien.tai.domain.model.Customer;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface CustomerMapperDTO {
-    CustomerDTO toDTO(Customer customer);
-    List<CustomerDTO> toDTO(List<Customer> customers);
+public interface AddressMapperDTO {
+    AddressDTO toDTO(Address address);
+    List<AddressDTO> toDTO(List<Address> addresses);
 }

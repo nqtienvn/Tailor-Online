@@ -3,7 +3,7 @@ package com.tien.tai.infrastructor.persistence.model;
 public enum Gender {
     MALE, FEMALE, OTHER;
 
-    public Gender fromString(String value) {
+    public static Gender fromString(String value) {
         if (value == null) return null;
         value = value.trim().toUpperCase();
         return switch (value) {

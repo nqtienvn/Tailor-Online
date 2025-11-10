@@ -18,8 +18,8 @@ public enum BadRequestError implements ErrorResponse{
             40000009, "Can not cancel with approval status other than wait approve status"),
     CAN_NOT_WAIT_APPROVE_WITH_APPROVAL_STATUS_OTHER_THAN_NEW_STATUS(
             40000010, "Can not wait approve with approval status other than wait cancel status"),
-    CAN_NOT_DELETE_IN_APPROVED_OR_WAIT_APPROVE(
-            40000011, "Can not delete in approved or wait approve"),
+    CAN_NOT_DELETE(
+            40000011, "Can not delete"),
     RECORD_IS_BEING_UPDATED(40000012, "The record is being updated. Please wait a minute"),
     CAN_NOT_BACK_WAIT_APPROVE_WITH_APPROVAL_STATUS_OTHER_THAN_APPROVED_STATUS(
             40000013, "Can not back wait approve with approval status other than approved status"),

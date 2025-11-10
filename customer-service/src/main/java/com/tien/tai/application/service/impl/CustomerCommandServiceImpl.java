@@ -4,7 +4,7 @@ import com.tien.tai.application.dto.mapper.CustomerMapperDTO;
 import com.tien.tai.application.dto.request.CustomerCreateRequest;
 import com.tien.tai.application.dto.request.CustomerUpdateRequest;
 import com.tien.tai.application.dto.response.CustomerDTO;
-import com.tien.tai.application.mapper.MapperRequestCommand;
+import com.tien.tai.application.mapper.handon.MapperToCmd;
 import com.tien.tai.application.service.CustomerCommandService;
 import com.tien.tai.domain.command.CustomerCreateCmd;
 import com.tien.tai.domain.command.CustomerUpdateCmd;
@@ -16,9 +16,11 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class CustomerCommandServiceImpl implements CustomerCommandService {
-    private final MapperRequestCommand mapperRequestCommand;
+    private final MapperToCmd mapperRequestCommand;
     private final CustomerDomainRepository customerDomainRepository;
     private final CustomerMapperDTO customerMapperDTO;
+
+
     @Override
     public CustomerDTO create(CustomerCreateRequest request) {
         CustomerCreateCmd cmd = mapperRequestCommand.from(request);
@@ -35,6 +37,11 @@ public class CustomerCommandServiceImpl implements CustomerCommandService {
     }
 
     @Override
+    public CustomerDTO detail(Integer id) {
+        return customerMapperDTO.toDTO(customerDomainRepository.findById(id));
+    }
+
+    @Override
     public void inActive(Integer id) {
         Customer domainFind = customerDomainRepository.findById(id);
         domainFind.inActive();
@@ -48,4 +55,5 @@ public class CustomerCommandServiceImpl implements CustomerCommandService {
         domainFind.active();
         customerDomainRepository.softDelete(domainFind);
     }
+
 }
