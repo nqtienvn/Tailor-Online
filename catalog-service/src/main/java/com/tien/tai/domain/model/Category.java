@@ -5,6 +5,8 @@ import com.tien.tai.domain.command.CategoryCmd;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,6 +17,8 @@ public class Category {
     Integer id;
     String name;
     Boolean isDeleted;
+    List<Product> products;
+
 
     public Category(CategoryCmd cmd) {
         this.name = cmd.getName();
@@ -28,6 +32,10 @@ public class Category {
 
     public void softDelete() {
         this.isDeleted = true;
+    }
+
+    public void enrichProduct(List<Product> products) {
+        this.products = products;
     }
 }
 

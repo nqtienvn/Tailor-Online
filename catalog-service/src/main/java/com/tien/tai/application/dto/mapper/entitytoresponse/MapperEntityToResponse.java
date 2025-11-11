@@ -16,6 +16,11 @@ public class MapperEntityToResponse {
                         .id(e.getId())
                         .name(e.getName())
                         .categoryId(e.getCategoryId())
+                        .fabricId(e.getFabricId())
+                        .basePrice(e.getBasePrice())
+                        .description(e.getDescription())
+                        .isDeleted(e.getIsDeleted())
+                        .status(e.getStatus())
                         .build())
                 .collect(Collectors.toList());
     }
