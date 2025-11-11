@@ -21,7 +21,6 @@ public class CategoryCommandServiceCatalogImpl implements ServiceCatalogCommandC
     private final CategoryCommandMapper categoryCommandMapper;
     private final CategoryMapperDTO categoryMapperDTO;
     private final CategoryDomainRepository categoryDomainRepository;
-    private final ProductDomainRepository productDomainRepository;
 
     @Override
     @Transactional

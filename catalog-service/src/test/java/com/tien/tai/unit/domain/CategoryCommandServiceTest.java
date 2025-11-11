@@ -5,7 +5,7 @@ import com.tien.common.exception.error.NotFoundError;
 import com.tien.tai.application.dto.mapper.CategoryMapperDTO;
 import com.tien.tai.application.dto.response.CategoryDTO;
 import com.tien.tai.application.mapper.CategoryCommandMapper;
-import com.tien.tai.application.service.command.impl.CategoryCommandServiceCatalogImpl;
+import com.tien.tai.application.service.command.impl.impl.CategoryCommandServiceCatalogImpl;
 import com.tien.tai.domain.model.Category;
 import com.tien.tai.domain.repository.CategoryDomainRepository;
 import com.tien.tai.domain.repository.ProductDomainRepository;
