@@ -5,10 +5,11 @@ import com.tien.tai.domain.model.OrderDomain;
 import com.tien.tai.domain.model.OrderItemDomain;
 import com.tien.tai.infrastructure.persistence.model.OrderEntity;
 import com.tien.tai.infrastructure.persistence.model.OrderItemEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class OrderItemMapperImpl implements ToEntityDomain<OrderItemEntity, OrderItemDomain> {
 
 
@@ -20,7 +21,7 @@ public class OrderItemMapperImpl implements ToEntityDomain<OrderItemEntity, Orde
                 .quantity(domain.getQuantity())
                 .price(domain.getPrice())
                 .fabricType(domain.getFabricType())
-                .orderID(domain.getOrderID())
+                .orderId(domain.getOrderID())
                 .isDeleted(domain.getIsDeleted())
                 .status(domain.getStatus())
                 .build();
@@ -44,7 +45,7 @@ public class OrderItemMapperImpl implements ToEntityDomain<OrderItemEntity, Orde
                 .quantity(entity.getQuantity())
                 .price(entity.getPrice())
                 .fabricType(entity.getFabricType())
-                .orderID(entity.getOrderID())
+                .orderID(entity.getOrderId())
                 .isDeleted(entity.getIsDeleted())
                 .status(entity.getStatus())
                 .build();

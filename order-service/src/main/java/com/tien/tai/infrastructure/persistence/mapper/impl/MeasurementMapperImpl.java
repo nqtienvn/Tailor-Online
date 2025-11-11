@@ -3,10 +3,11 @@ package com.tien.tai.infrastructure.persistence.mapper.impl;
 import com.tien.common.mapper.catalogservice.ToEntityDomain;
 import com.tien.tai.domain.model.MeasurementDomain;
 import com.tien.tai.infrastructure.persistence.model.MeasurementEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class MeasurementMapperImpl implements ToEntityDomain<MeasurementEntity, MeasurementDomain> {
     @Override
     public MeasurementEntity toEntity(MeasurementDomain domain) {
@@ -18,7 +19,7 @@ public class MeasurementMapperImpl implements ToEntityDomain<MeasurementEntity, 
                 .shoulder(domain.getShoulder())
                 .sleeveLength(domain.getSleeveLength())
                 .trouserLength(domain.getTrouserLength())
-                .orderID(domain.getOrderID())
+                .orderId(domain.getOrderID())
                 .isDeleted(domain.getIsDeleted())
                 .build();
     }
@@ -44,7 +45,7 @@ public class MeasurementMapperImpl implements ToEntityDomain<MeasurementEntity, 
                 .shoulder(entity.getShoulder())
                 .sleeveLength(entity.getSleeveLength())
                 .trouserLength(entity.getTrouserLength())
-                .orderID(entity.getOrderID())
+                .orderID(entity.getOrderId())
                 .status(entity.getStatus())
                 .isDeleted(entity.getIsDeleted())
                 .build();

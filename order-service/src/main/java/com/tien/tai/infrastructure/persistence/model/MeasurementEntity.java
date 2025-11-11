@@ -31,5 +31,5 @@ public class MeasurementEntity extends Auditor {
     Boolean status = true;
     Boolean isDeleted = false;
 
-    int orderID;
+    int orderId;
 }

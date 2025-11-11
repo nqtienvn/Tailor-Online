@@ -2,7 +2,14 @@ package com.tien.common.controller.catalogservice;
 
 import com.tien.common.dto.response.ApiResponse;
 import org.springframework.web.bind.annotation.*;
-
+/**
+ * Generic interface for managing catalog-type resources.
+ * Provides CRUD and status management endpoints (active/inactive/delete).
+ *
+ * @param <T> Response DTO type
+ * @param <F> Request DTO type
+ * @param <I> Identifier type (e.g. Long, Integer)
+ */
 public interface ResourceCatalogCommon<T, F, I> {
     //admin
     @PostMapping()

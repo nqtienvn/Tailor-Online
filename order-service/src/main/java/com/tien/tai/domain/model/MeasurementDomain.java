@@ -36,7 +36,7 @@ public class MeasurementDomain {
         this.orderID = cmd.getOrderID();
     }
 
-    // ===== Hàm update từ MeasurementCmd =====
+
     public void update(MeasurementCmd cmd) {
         if (cmd == null) return;
 
@@ -49,10 +49,19 @@ public class MeasurementDomain {
         if (cmd.getOrderID() > 0) this.orderID = cmd.getOrderID();
     }
 
-    // ===== Hàm soft delete =====
+
     public void softDelete() {
         this.isDeleted = true;
-        this.status = false; // nếu muốn đánh dấu inactive khi xóa
+        this.status = false;
+    }
+    public void activate() {
+        this.status = true;
+        this.isDeleted = false;
+    }
+
+
+    public void inActivate() {
+        this.status = false;
     }
 
 }

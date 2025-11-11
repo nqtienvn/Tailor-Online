@@ -1,0 +1,26 @@
+package com.tien.tai.application.dto.mapper.entitytoresponse;
+
+import com.tien.tai.application.dto.response.OrderItemDTO;
+import com.tien.tai.infrastructure.persistence.model.OrderEntity;
+import com.tien.tai.infrastructure.persistence.model.OrderItemEntity;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
+import java.util.stream.Collectors;
+@Component
+
+public class MapperEntityToResponse {
+    public List<OrderItemDTO> toOrderItemDTOs (List <OrderItemEntity> entityList){
+        return entityList.stream()
+                .map(e -> OrderItemDTO.builder()
+                                .id(e.getId())
+                                .productName(e.getProductName())
+                                .quantity(e.getQuantity())
+                                .price(e.getPrice())
+                                .fabricType(e.getFabricType())
+                                .status(e.getStatus())
+                                .isDeleted(e.getIsDeleted())
+                                .build()
+                        ).collect(Collectors.toList());
+    }
+}

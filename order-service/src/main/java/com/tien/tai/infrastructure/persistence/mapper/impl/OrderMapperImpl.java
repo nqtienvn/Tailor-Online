@@ -3,11 +3,12 @@ package com.tien.tai.infrastructure.persistence.mapper.impl;
 import com.tien.common.mapper.catalogservice.ToEntityDomain;
 import com.tien.tai.domain.model.OrderDomain;
 import com.tien.tai.infrastructure.persistence.model.OrderEntity;
+import org.springframework.stereotype.Component;
 
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Component
 public class OrderMapperImpl implements ToEntityDomain<OrderEntity, OrderDomain> {
 
     @Override

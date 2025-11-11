@@ -1,12 +1,10 @@
-package com.tien.tai.domain.command;
-
+package com.tien.tai.application.dto.response;
 import com.tien.common.constant.OrderStatus;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
-import java.time.LocalDateTime;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,16 +13,16 @@ import lombok.experimental.FieldDefaults;
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
-public class OrderCmd {
+public class OrderDTO {
+    Integer id;
     String customerName;
     String phone;
     String address;
-
-    @Enumerated(EnumType.STRING)
     OrderStatus status;
-
     LocalDateTime orderDate;
     LocalDateTime completedDate;
+    Boolean isDeleted;
 
-
+    List<OrderItemDTO> orderItems;
+    MeasurementDTO measurement;
 }

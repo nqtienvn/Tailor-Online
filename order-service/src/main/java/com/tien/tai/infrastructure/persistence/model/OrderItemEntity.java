@@ -29,5 +29,6 @@ public class OrderItemEntity extends Auditor {
     Boolean status = true;
     Boolean isDeleted = false;
 
-    int orderID;
+    @Column(name = "orderid", nullable = false)
+    int orderId;
 }

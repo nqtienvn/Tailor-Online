@@ -1,5 +1,10 @@
 package com.tien.common.service;
-
+/**
+ * Generic command service interface for CRUD operations.
+ * @param <T> DTO type
+ * @param <F> Request type
+ * @param <I> ID type
+ */
 public interface ServiceCatalogCommandCommon<T, F, I> {
     T create(F request);
 
