@@ -65,9 +65,8 @@ public class FabricDomainRepositoryImpl implements FabricDomainRepository {
         Map<Integer, List<ProductDTO>> productsByCategory = productDtos.stream()
                 .collect(Collectors.groupingBy(ProductDTO::getCategoryId));
 
-        for (FabricDTO fabric : fabricDTOS) {
-            List<ProductDTO> relatedProducts = productsByCategory.getOrDefault(fabric.getId(), List.of());
-            fabric.setProducts(relatedProducts);
-        }
+        fabricDTOS.forEach(fabricDTO -> fabricDTO.setProducts(productsByCategory
+                .getOrDefault(fabricDTO.getId(), List.of())
+        ));
     }
 }

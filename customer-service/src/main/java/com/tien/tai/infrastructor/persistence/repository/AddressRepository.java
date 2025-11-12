@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface AddressRepository extends JpaRepository<AddressEntity, Integer> {
     List<AddressEntity> findAddressEntityByCustomerId(Integer customerId);
+    List<AddressEntity> findAddressEntityByCustomerIdIn(List<Integer> customerIds);
 }

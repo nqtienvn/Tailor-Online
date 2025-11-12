@@ -55,19 +55,17 @@ public class CategoryDomainRepositoryImpl implements CategoryDomainRepository {
         if (categoryDtos == null || categoryDtos.isEmpty()) return;
 
         List<Integer> categoryIds = categoryDtos.stream()
-                .map(CategoryDTO::getId)
+                .map(CategoryDTO::getId) //get het id ra tu list DTO
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        List<ProductEntity> products = productRepository.findByCategoryIdIn(categoryIds);
-        List<ProductDTO> productDtos = mapperEntityToResponse.toProductDTOs(products);
+        List<ProductEntity> products = productRepository.findByCategoryIdIn(categoryIds); //lay toan bo product lien quan den categoryID
+        List<ProductDTO> productDtoList = mapperEntityToResponse.toProductDTOs(products);
 
-        Map<Integer, List<ProductDTO>> productsByCategory = productDtos.stream()
+        Map<Integer, List<ProductDTO>> productsByCategory = productDtoList.stream() //map gia tri theo map categoryId va gia tri product
                 .collect(Collectors.groupingBy(ProductDTO::getCategoryId));
 
-        for (CategoryDTO category : categoryDtos) {
-            List<ProductDTO> relatedProducts = productsByCategory.getOrDefault(category.getId(), List.of());
-            category.setProducts(relatedProducts);
-        }
+        categoryDtos.forEach(categoryDTO -> categoryDTO.setProducts(productsByCategory
+                .getOrDefault(categoryDTO.getId(), List.of())));
     }
 }
