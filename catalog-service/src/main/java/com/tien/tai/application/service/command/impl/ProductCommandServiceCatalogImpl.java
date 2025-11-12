@@ -1,4 +1,4 @@
-package com.tien.tai.application.service.command.impl.impl;
+package com.tien.tai.application.service.command.impl;
 
 import com.tien.common.domain.repository.DomainRepositoryCommon;
 import com.tien.common.service.ServiceCatalogCommandCommon;
