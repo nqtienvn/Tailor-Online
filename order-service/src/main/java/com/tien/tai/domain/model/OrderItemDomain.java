@@ -14,18 +14,18 @@ import lombok.experimental.FieldDefaults;
 public class OrderItemDomain {
     Integer id;
 
-    String productName;
+    Integer productId;
     Integer quantity;
     Double price;
     String fabricType;
 
-    int orderID;
+    Integer orderID;
 
     Boolean status = true;
     Boolean isDeleted = false;
 
     public OrderItemDomain(OrderItemCmd cmd){
-        this.productName = cmd.getProductName();
+        this.productId = cmd.getProductId();
         this.quantity = cmd.getQuantity();
         this.price = cmd.getPrice();
         this.fabricType = cmd.getFabricType();
@@ -36,7 +36,7 @@ public class OrderItemDomain {
     public void update(OrderItemCmd cmd) {
         if (cmd == null) return;
 
-        if (cmd.getProductName() != null) this.productName = cmd.getProductName();
+        if (cmd.getProductId() != 0) this.productId = cmd.getProductId();
         if (cmd.getQuantity() != null) this.quantity = cmd.getQuantity();
         if (cmd.getPrice() != null) this.price = cmd.getPrice();
         if (cmd.getFabricType() != null) this.fabricType = cmd.getFabricType();

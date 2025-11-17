@@ -27,7 +27,7 @@ public class OrderItemResourceCatalogImpl implements OrderItemResourceCatalog {
     public ApiResponse<OrderItemDTO> update(OrderItemRequest request, Integer id) {
         return ApiResponse.<OrderItemDTO>builder()
                 .code(200)
-                .message("create orderItem successfully")
+                .message("update orderItem successfully")
                 .result(serviceCatalogCommandCommon.update(request,id))
                 .build();
     }
@@ -36,7 +36,7 @@ public class OrderItemResourceCatalogImpl implements OrderItemResourceCatalog {
     public ApiResponse<OrderItemDTO> detail(Integer id) {
         return ApiResponse.<OrderItemDTO>builder()
                 .code(200)
-                .message("create orderItem successfully")
+                .message("find orderItem successfully")
                 .result(serviceCatalogCommandCommon.detail(id))
                 .build();
     }

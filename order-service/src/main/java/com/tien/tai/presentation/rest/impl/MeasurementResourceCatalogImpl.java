@@ -22,12 +22,6 @@ public class MeasurementResourceCatalogImpl implements MeasurementResourceCatalo
                 .message("creat measurement successfully")
                 .result(serviceCatalogCommandCommon.create(request))
                 .build();
-
-//        return ApiResponse.<CategoryDTO>builder()
-//                .code(200)
-//                .message("create category successfully")
-//                .result(serviceCatalogCommandCommon.create(categoryRequest))
-//                .build();
     }
 
     @Override

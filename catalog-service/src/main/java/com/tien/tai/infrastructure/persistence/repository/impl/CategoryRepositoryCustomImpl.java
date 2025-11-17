@@ -67,7 +67,7 @@ public class CategoryRepositoryCustomImpl implements CategoryRepositoryCustom {
 
         if (params.getName() != null && !params.getName().isBlank()) {
             where.append("AND LOWER(c.name) LIKE LOWER(CONCAT('%', :name, '%')) ");
-            values.put("name", params.getName());
+            values .put("name", params.getName());
         }
 
         return where.toString();

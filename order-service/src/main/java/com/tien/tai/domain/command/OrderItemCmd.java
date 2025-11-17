@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 
 public class OrderItemCmd {
-    String productName;
+    Integer productId;
     Integer quantity;
     Double price;
     String fabricType;

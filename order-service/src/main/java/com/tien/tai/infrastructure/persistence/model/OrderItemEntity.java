@@ -15,20 +15,36 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderItemEntity extends Auditor {
+    public class OrderItemEntity extends Auditor {
+        @Id
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        private Integer id;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer id;
+        // Nếu DB đang dùng product_id (Integer) chứ không có product_name:
+        @Column(name = "product_id", nullable = false)
+        private Integer productId;
 
-    String productName;
-    Integer quantity;
-    Double price;
-    String fabricType;
+        @Column(name = "quantity", nullable = false)
+        private Integer quantity;
 
-    Boolean status = true;
-    Boolean isDeleted = false;
+        // DB là unit_price (không phải price)
+        @Column(name = "unit_price", nullable = false)
+        private Double price;
 
-    @Column(name = "orderid", nullable = false)
-    int orderId;
-}
+        // DB có subtotal -> nên map hoặc set default ở DB
+        @Column(name = "subtotal")
+        private Double subtotal;
+
+        @Column(name = "fabric_type")
+        private String fabricType;
+
+        @Column(name = "status")
+        private Boolean status = true;
+
+        @Column(name = "is_deleted")
+        private Boolean isDeleted = false;
+
+        // Dùng wrapper để có thể null nếu cần; nếu bắt buộc có thì để nullable=false
+        @Column(name = "order_id", nullable = false)
+        private Integer orderId;
+    }

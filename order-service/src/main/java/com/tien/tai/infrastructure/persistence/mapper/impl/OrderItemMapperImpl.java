@@ -17,7 +17,7 @@ public class OrderItemMapperImpl implements ToEntityDomain<OrderItemEntity, Orde
     public OrderItemEntity toEntity(OrderItemDomain domain) {
         return OrderItemEntity.builder()
                 .id(domain.getId())
-                .productName(domain.getProductName())
+                .productId(domain.getProductId())
                 .quantity(domain.getQuantity())
                 .price(domain.getPrice())
                 .fabricType(domain.getFabricType())
@@ -41,7 +41,7 @@ public class OrderItemMapperImpl implements ToEntityDomain<OrderItemEntity, Orde
     public OrderItemDomain toDomain(OrderItemEntity entity) {
         return OrderItemDomain.builder()
                 .id(entity.getId())
-                .productName(entity.getProductName())
+                .productId(entity.getProductId())
                 .quantity(entity.getQuantity())
                 .price(entity.getPrice())
                 .fabricType(entity.getFabricType())

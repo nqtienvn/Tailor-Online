@@ -14,7 +14,7 @@ public class MapperEntityToResponse {
         return entityList.stream()
                 .map(e -> OrderItemDTO.builder()
                                 .id(e.getId())
-                                .productName(e.getProductName())
+                                .productId(e.getProductId())
                                 .quantity(e.getQuantity())
                                 .price(e.getPrice())
                                 .fabricType(e.getFabricType())
