@@ -3,7 +3,7 @@ package com.tien.tai.presentation.rest.impl;
 import com.tien.common.dto.response.ApiResponse;
 import com.tien.common.dto.response.PageDTO;
 import com.tien.common.dto.response.PagingResponse;
-import com.tien.common.service.ServiceCatalogCommandCommon;
+import com.tien.common.service.ServiceCommandCommon;
 import com.tien.common.service.ServiceQueryCommon;
 import com.tien.tai.application.dto.request.FabricRequest;
 import com.tien.tai.application.dto.request.FabricSearchRequest;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/catalog-service/fabric")
 @RequiredArgsConstructor
 public class FabricResourceCatalogImpl implements FabricResourceCatalog {
-    private final ServiceCatalogCommandCommon<FabricDTO, FabricRequest, Integer> serviceCatalogCommandCommon;
+    private final ServiceCommandCommon<FabricDTO, FabricRequest, Integer> serviceCommandCommon;
     private final ServiceQueryCommon<PageDTO<FabricDTO>, FabricSearchRequest> serviceQueryCommon;
 
     @Override
@@ -26,7 +26,7 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
         return ApiResponse.<FabricDTO>builder()
                 .code(201)
                 .message("add fabric successfully")
-                .result(serviceCatalogCommandCommon.create(fabricRequest))
+                .result(serviceCommandCommon.create(fabricRequest))
                 .build();
     }
 
@@ -35,7 +35,7 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
         return ApiResponse.<FabricDTO>builder()
                 .code(200)
                 .message("update fabric successfully")
-                .result(serviceCatalogCommandCommon.update(fabricRequest, id))
+                .result(serviceCommandCommon.update(fabricRequest, id))
                 .build();
     }
 
@@ -44,13 +44,13 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
         return ApiResponse.<FabricDTO>builder()
                 .code(200)
                 .message("get fabric successfully")
-                .result(serviceCatalogCommandCommon.detail(id))
+                .result(serviceCommandCommon.detail(id))
                 .build();
     }
 
     @Override
     public ApiResponse<String> delete(Integer id) {
-        serviceCatalogCommandCommon.softDelete(id);
+        serviceCommandCommon.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("delete fabric successfully")
@@ -59,7 +59,7 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
 
     @Override
     public ApiResponse<String> inActive(Integer id) {
-        serviceCatalogCommandCommon.inActive(id);
+        serviceCommandCommon.inActive(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("in active fabric successfully")
@@ -68,7 +68,7 @@ public class FabricResourceCatalogImpl implements FabricResourceCatalog {
 
     @Override
     public ApiResponse<String> active(Integer id) {
-        serviceCatalogCommandCommon.active(id);
+        serviceCommandCommon.active(id);
         return ApiResponse.<String>builder()
                 .code(204)
                 .message("active fabric successfully")

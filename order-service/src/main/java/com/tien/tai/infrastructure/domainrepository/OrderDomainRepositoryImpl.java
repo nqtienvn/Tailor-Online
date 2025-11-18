@@ -66,12 +66,12 @@ public class OrderDomainRepositoryImpl implements OrderDomainRepository {
         List <OrderItemEntity> listEntity = orderItemRepository.findByOrderIdIn(orderIds);
         List <OrderItemDTO> listDTO = mapperEntityToResponse.toOrderItemDTOs(listEntity);
 
-        Map<Integer,List<OrderItemDTO>> groupsByOrderID = listDTO.stream()
-                .collect(Collectors.groupingBy(OrderItemDTO :: getOrderID));
-
-        for (OrderDTO orderDTO : orderDTOList){
-            List <OrderItemDTO> orderItemDTOS = groupsByOrderID.getOrDefault(orderDTO.getId(),List.of());
-            orderDTO.setOrderItems(orderItemDTOS);
+//        Map<Integer,List<OrderItemDTO>> groupsByOrderID = listDTO.stream()
+//                .collect(Collectors.groupingBy(OrderItemDTO :: getOrderID));
+//
+//        for (OrderDTO orderDTO : orderDTOList){
+//            List <OrderItemDTO> orderItemDTOS = groupsByOrderID.getOrDefault(orderDTO.getId(),List.of());
+//            orderDTO.setOrderItems(orderItemDTOS);
         }
     }
 //    // 1. Gom nhóm dữ liệu theo một khóa
@@ -82,4 +82,4 @@ public class OrderDomainRepositoryImpl implements OrderDomainRepository {
 //for (T item : listT) {
 //        List<V> relatedValues = groupedMap.getOrDefault(item.getKey(), List.of());
 //        item.setValues(relatedValues);
-}
+//}

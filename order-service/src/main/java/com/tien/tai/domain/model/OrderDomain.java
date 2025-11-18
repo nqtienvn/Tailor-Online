@@ -33,22 +33,12 @@ public class OrderDomain {
 
     public OrderDomain(OrderCmd cmd) {
         this.customerName = cmd.getCustomerName();
-        this.phone = cmd.getPhone();
-        this.address = cmd.getAddress();
-        this.status = cmd.getStatus();
-        this.orderDate = cmd.getOrderDate();
-        this.completedDate = cmd.getCompletedDate();
     }
 
     public void update(OrderCmd cmd) {
         if (cmd == null) return;
 
         if (cmd.getCustomerName() != null) this.customerName = cmd.getCustomerName();
-        if (cmd.getPhone() != null) this.phone = cmd.getPhone();
-        if (cmd.getAddress() != null) this.address = cmd.getAddress();
-        if (cmd.getStatus() != null) this.status = cmd.getStatus();
-        if (cmd.getOrderDate() != null) this.orderDate = cmd.getOrderDate();
-        if (cmd.getCompletedDate() != null) this.completedDate = cmd.getCompletedDate();
     }
     public void softDelete(){
         this.isDeleted = true;

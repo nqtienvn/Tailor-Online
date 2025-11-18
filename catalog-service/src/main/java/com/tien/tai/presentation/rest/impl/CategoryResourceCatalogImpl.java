@@ -3,7 +3,7 @@ package com.tien.tai.presentation.rest.impl;
 import com.tien.common.dto.response.ApiResponse;
 import com.tien.common.dto.response.PageDTO;
 import com.tien.common.dto.response.PagingResponse;
-import com.tien.common.service.ServiceCatalogCommandCommon;
+import com.tien.common.service.ServiceCommandCommon;
 import com.tien.common.service.ServiceQueryCommon;
 import com.tien.tai.application.dto.request.CategoryRequest;
 import com.tien.tai.application.dto.request.CategorySearchRequest;
@@ -11,7 +11,6 @@ import com.tien.tai.application.dto.response.CategoryDTO;
 import com.tien.tai.infrastructure.persistence.model.CategoryEntity;
 import com.tien.tai.infrastructure.persistence.repository.CategoryRepository;
 import com.tien.tai.presentation.rest.CategoryResourceCatalog;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.jxls.common.Context;
 import org.jxls.util.JxlsHelper;
@@ -32,7 +31,7 @@ import java.util.List;
 @RequestMapping("/catalog-service/category")
 @RequiredArgsConstructor
 public class CategoryResourceCatalogImpl implements CategoryResourceCatalog {
-    private final ServiceCatalogCommandCommon<CategoryDTO, CategoryRequest, Integer> serviceCatalogCommandCommon;
+    private final ServiceCommandCommon<CategoryDTO, CategoryRequest, Integer> serviceCommandCommon;
     private final ServiceQueryCommon<PageDTO<CategoryDTO>, CategorySearchRequest> serviceQueryCommon;
     private final CategoryRepository categoryRepository;
 
@@ -41,7 +40,7 @@ public class CategoryResourceCatalogImpl implements CategoryResourceCatalog {
         return ApiResponse.<CategoryDTO>builder()
                 .code(200)
                 .message("create category successfully")
-                .result(serviceCatalogCommandCommon.create(categoryRequest))
+                .result(serviceCommandCommon.create(categoryRequest))
                 .build();
     }
 
@@ -50,7 +49,7 @@ public class CategoryResourceCatalogImpl implements CategoryResourceCatalog {
         return ApiResponse.<CategoryDTO>builder()
                 .code(200)
                 .message("update category successfully")
-                .result(serviceCatalogCommandCommon.update(categoryRequest, id))
+                .result(serviceCommandCommon.update(categoryRequest, id))
                 .build();
     }
 
@@ -59,13 +58,13 @@ public class CategoryResourceCatalogImpl implements CategoryResourceCatalog {
         return ApiResponse.<CategoryDTO>builder()
                 .code(200)
                 .message("get category by successfully")
-                .result(serviceCatalogCommandCommon.detail(id))
+                .result(serviceCommandCommon.detail(id))
                 .build();
     }
 
     @Override
     public ApiResponse<String> delete(Integer id) {
-        serviceCatalogCommandCommon.softDelete(id);
+        serviceCommandCommon.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("delete category successfully")

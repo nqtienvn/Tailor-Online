@@ -4,11 +4,9 @@ import com.tien.common.exception.AppException;
 import com.tien.common.exception.error.NotFoundError;
 import com.tien.tai.application.dto.mapper.CategoryMapperDTO;
 import com.tien.tai.application.dto.response.CategoryDTO;
-import com.tien.tai.application.mapper.CategoryCommandMapper;
-import com.tien.tai.application.service.command.impl.CategoryCommandServiceCatalogImpl;
+import com.tien.tai.application.service.command.impl.CategoryCommandServiceImpl;
 import com.tien.tai.domain.model.Category;
 import com.tien.tai.domain.repository.CategoryDomainRepository;
-import com.tien.tai.domain.repository.ProductDomainRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -30,7 +28,7 @@ class CategoryCommandServiceTest {
     private CategoryMapperDTO categoryMapperDTO;
     private Category mockCategory;
     @InjectMocks
-    private CategoryCommandServiceCatalogImpl categoryCommandServiceCatalogImpl;
+    private CategoryCommandServiceImpl categoryCommandServiceCatalogImpl;
 
     @BeforeEach
     void setUp() {

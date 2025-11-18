@@ -1,10 +1,14 @@
 package com.tien.tai.application.dto.response;
-import com.tien.common.constant.OrderStatus;
-import lombok.*;
-import lombok.experimental.FieldDefaults;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.tien.common.constant.OrderStatus;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Getter
 @Setter
@@ -12,17 +16,13 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderDTO {
     Integer id;
     String customerName;
-    String phone;
-    String address;
+    String customerPhone;
+    String customerAddress;
+    Double totalAmount;
+    Double depositAmount;
     OrderStatus status;
-    LocalDateTime orderDate;
-    LocalDateTime completedDate;
-    Boolean isDeleted;
-
-    List<OrderItemDTO> orderItems;
-    MeasurementDTO measurement;
 }

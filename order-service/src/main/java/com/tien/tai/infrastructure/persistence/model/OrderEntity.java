@@ -25,18 +25,12 @@ public class OrderEntity extends Auditor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-
     String customerName;
-    String phone;
-    String address;
-
-    Boolean isDeleted = false;
-
+    String customerPhone;
+    @Column(columnDefinition = "VARCHAR(500)")
+    String customerAddress;
+    Double totalAmount;
+    Double depositAmount;//tiền cọc
     @Enumerated(EnumType.STRING)
     OrderStatus status;
-
-    LocalDateTime orderDate;
-    LocalDateTime completedDate;
-
-
 }

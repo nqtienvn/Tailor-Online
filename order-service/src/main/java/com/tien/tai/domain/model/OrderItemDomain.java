@@ -28,8 +28,6 @@ public class OrderItemDomain {
         this.productId = cmd.getProductId();
         this.quantity = cmd.getQuantity();
         this.price = cmd.getPrice();
-        this.fabricType = cmd.getFabricType();
-        this.orderID = cmd.getOrderID();
         this.status = true;
         this.isDeleted = false;
     }
@@ -39,8 +37,6 @@ public class OrderItemDomain {
         if (cmd.getProductId() != 0) this.productId = cmd.getProductId();
         if (cmd.getQuantity() != null) this.quantity = cmd.getQuantity();
         if (cmd.getPrice() != null) this.price = cmd.getPrice();
-        if (cmd.getFabricType() != null) this.fabricType = cmd.getFabricType();
-        if (cmd.getOrderID() > 0) this.orderID = cmd.getOrderID();
     }
     public void softDelete() {
         this.isDeleted = true;

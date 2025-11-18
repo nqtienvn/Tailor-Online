@@ -14,17 +14,10 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class OrderCmd {
     String customerName;
-    String phone;
-    String address;
-
-    @Enumerated(EnumType.STRING)
-    OrderStatus status;
-
-    LocalDateTime orderDate;
-    LocalDateTime completedDate;
-
-
+    String customerPhone;
+    String customerAddress;
+    Double totalAmount;
+    Double depositAmount;//tiền cọc
 }

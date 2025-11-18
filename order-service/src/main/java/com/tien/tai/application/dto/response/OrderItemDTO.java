@@ -1,4 +1,10 @@
 package com.tien.tai.application.dto.response;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.tien.tai.application.dto.request.MeasurementTrouserRequest;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,14 +14,13 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class OrderItemDTO {
-    Integer id;
-    Integer productId;
-    Integer quantity;
-    Double price;
-    String fabricType;
-    Boolean status;
-    Boolean isDeleted;
-    Integer orderID;
+    private Integer id;
+    private Integer productId;
+    private Integer quantity;
+    private Double price;
+    private Integer orderId;
+    private Integer measurementShirtID;
+    private Integer measurementTrouserID;
 }

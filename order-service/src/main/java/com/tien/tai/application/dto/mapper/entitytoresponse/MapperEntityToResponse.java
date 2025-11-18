@@ -17,9 +17,6 @@ public class MapperEntityToResponse {
                                 .productId(e.getProductId())
                                 .quantity(e.getQuantity())
                                 .price(e.getPrice())
-                                .fabricType(e.getFabricType())
-                                .status(e.getStatus())
-                                .isDeleted(e.getIsDeleted())
                                 .build()
                         ).collect(Collectors.toList());
     }

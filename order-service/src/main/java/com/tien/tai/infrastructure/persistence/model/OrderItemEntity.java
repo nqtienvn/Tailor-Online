@@ -1,8 +1,19 @@
 package com.tien.tai.infrastructure.persistence.model;
 
 import com.tien.common.entity.Auditor;
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EntityListeners;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -15,36 +26,27 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-    public class OrderItemEntity extends Auditor {
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Integer id;
+public class OrderItemEntity extends Auditor {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-        // Nếu DB đang dùng product_id (Integer) chứ không có product_name:
-        @Column(name = "product_id", nullable = false)
-        private Integer productId;
+    @Column(name = "product_id", nullable = false)
+    private Integer productId;
 
-        @Column(name = "quantity", nullable = false)
-        private Integer quantity;
+    @Column(name = "quantity", nullable = false)
+    private Integer quantity;
 
-        // DB là unit_price (không phải price)
-        @Column(name = "unit_price", nullable = false)
-        private Double price;
+    @Column(name = "price", nullable = false)
+    private Double price;
 
-        // DB có subtotal -> nên map hoặc set default ở DB
-        @Column(name = "subtotal")
-        private Double subtotal;
+    @Column(name = "order_id", nullable = false)
+    private Integer orderId;
 
-        @Column(name = "fabric_type")
-        private String fabricType;
+    @Column(name = "measurement_shirt_id")
+    private Integer measurementShirtID;
 
-        @Column(name = "status")
-        private Boolean status = true;
+    @Column(name = "measurement_trouser_id")
+    private Integer measurementTrouserID;
 
-        @Column(name = "is_deleted")
-        private Boolean isDeleted = false;
-
-        // Dùng wrapper để có thể null nếu cần; nếu bắt buộc có thì để nullable=false
-        @Column(name = "order_id", nullable = false)
-        private Integer orderId;
-    }
+}

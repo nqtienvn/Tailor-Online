@@ -1,4 +1,5 @@
 package com.tien.tai.domain.command;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -8,13 +9,11 @@ import lombok.experimental.FieldDefaults;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-
 public class OrderItemCmd {
     Integer productId;
     Integer quantity;
     Double price;
-    String fabricType;
-
-
-    int orderID;
+    Integer orderId;
+    Integer measurementShirtID;
+    Integer measurementTrouserID;
 }

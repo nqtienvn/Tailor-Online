@@ -15,13 +15,8 @@ public class OrderMapperImpl implements ToEntityDomain<OrderEntity, OrderDomain>
     public OrderEntity toEntity(OrderDomain domain) {
         return OrderEntity.builder()
                 .id(domain.getId())
-                .phone(domain.getPhone())
-                .status(domain.getStatus())
                 .customerName(domain.getCustomerName())
-                .orderDate(domain.getOrderDate())
-                .completedDate(domain.getCompletedDate())
                 .status(domain.getStatus())
-                .isDeleted(domain.getIsDeleted())
                 .build();
     }
 
@@ -40,12 +35,7 @@ public class OrderMapperImpl implements ToEntityDomain<OrderEntity, OrderDomain>
         return OrderDomain.builder()
                 .id(entity.getId())
                 .customerName(entity.getCustomerName())
-                .phone(entity.getPhone())
-                .address(entity.getAddress())
                 .status(entity.getStatus())
-                .orderDate(entity.getOrderDate())
-                .completedDate(entity.getCompletedDate())
-                .isDeleted(entity.getIsDeleted())
                 .build();
     }
 }
