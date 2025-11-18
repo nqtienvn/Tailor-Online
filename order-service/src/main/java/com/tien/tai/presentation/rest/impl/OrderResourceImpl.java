@@ -13,13 +13,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order-service/order")
 @RequiredArgsConstructor
 public class OrderResourceImpl implements OrderResource {
-    private final ServiceCommandCommon<OrderDTO, OrderCreateRequest,Integer> serviceCommandCommonl;
+    private final ServiceCommandCommon<OrderDTO, OrderCreateRequest, Integer> orderCommandService;
+
     @Override
     public ApiResponse<OrderDTO> create(OrderCreateRequest request) {
         return ApiResponse.<OrderDTO>builder()
                 .code(200)
-                .message("create orderItem successfully")
-                .result(serviceCommandCommonl.create(request))
+                .message("create order item successfully")
+                .result(orderCommandService.create(request))
                 .build();
     }
 
@@ -28,7 +29,7 @@ public class OrderResourceImpl implements OrderResource {
         return ApiResponse.<OrderDTO>builder()
                 .code(200)
                 .message("create orderItem successfully")
-                .result(serviceCommandCommonl.update(request,id))
+                .result(orderCommandService.update(request, id))
                 .build();
     }
 
@@ -37,13 +38,13 @@ public class OrderResourceImpl implements OrderResource {
         return ApiResponse.<OrderDTO>builder()
                 .code(200)
                 .message("create orderItem successfully")
-                .result(serviceCommandCommonl.detail(id))
+                .result(orderCommandService.detail(id))
                 .build();
     }
 
     @Override
     public ApiResponse<String> delete(Integer id) {
-        serviceCommandCommonl.softDelete(id);
+        orderCommandService.softDelete(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("delete order successfully")
@@ -52,7 +53,7 @@ public class OrderResourceImpl implements OrderResource {
 
     @Override
     public ApiResponse<String> inActive(Integer id) {
-        serviceCommandCommonl.inActive(id);
+        orderCommandService.inActive(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("inactive order successfully")
@@ -61,7 +62,7 @@ public class OrderResourceImpl implements OrderResource {
 
     @Override
     public ApiResponse<String> active(Integer id) {
-        serviceCommandCommonl.active(id);
+        orderCommandService.active(id);
         return ApiResponse.<String>builder()
                 .code(200)
                 .message("active order successfully")

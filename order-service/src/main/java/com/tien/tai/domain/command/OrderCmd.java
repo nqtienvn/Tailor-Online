@@ -1,11 +1,12 @@
 package com.tien.tai.domain.command;
 
 import com.tien.common.constant.OrderStatus;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-
-import java.time.LocalDateTime;
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 @Getter
@@ -20,4 +21,5 @@ public class OrderCmd {
     String customerAddress;
     Double totalAmount;
     Double depositAmount;//tiền cọc
+    OrderStatus status;
 }

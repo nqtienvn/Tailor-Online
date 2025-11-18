@@ -1,5 +1,6 @@
 package com.tien.tai.application.dto.request;
 
+import com.tien.common.constant.OrderStatus;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,5 +21,5 @@ public class OrderCreateRequest {
     String customerAddress;
     Double totalAmount;
     Double depositAmount;//tiền cọc
-    //OrderStatus status;
+    OrderStatus status;
 }

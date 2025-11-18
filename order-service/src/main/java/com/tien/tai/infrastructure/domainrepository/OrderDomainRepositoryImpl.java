@@ -7,7 +7,6 @@ import com.tien.tai.application.dto.mapper.entitytoresponse.MapperEntityToRespon
 import com.tien.tai.application.dto.response.OrderDTO;
 import com.tien.tai.application.dto.response.OrderItemDTO;
 import com.tien.tai.domain.model.OrderDomain;
-import com.tien.tai.domain.model.OrderItemDomain;
 import com.tien.tai.domain.repository.OrderDomainRepository;
 import com.tien.tai.infrastructure.persistence.model.OrderEntity;
 import com.tien.tai.infrastructure.persistence.model.OrderItemEntity;
@@ -17,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
@@ -25,7 +23,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class OrderDomainRepositoryImpl implements OrderDomainRepository {
     private final OrderRepository orderRepository;
-    private final ToEntityDomain<OrderEntity,OrderDomain> toEntityDomain;
+    private final ToEntityDomain<OrderEntity, OrderDomain> toEntityDomain;
     private final OrderItemRepository orderItemRepository;
     private final MapperEntityToResponse mapperEntityToResponse;
 
@@ -38,33 +36,29 @@ public class OrderDomainRepositoryImpl implements OrderDomainRepository {
 
     @Override
     public OrderDomain findById(Integer id) {
-        OrderEntity orderEntity = orderRepository.findById(id).orElseThrow(() ->  new RuntimeException(new AppException(NotFoundError.NOT_FOUND)));
+        OrderEntity orderEntity = orderRepository.findById(id).orElseThrow(() -> new RuntimeException(new AppException(NotFoundError.NOT_FOUND)));
         return toEntityDomain.toDomain(orderEntity);
     }
 
     @Override
     public void softDelete(OrderDomain domain) {
-        domain.softDelete();
-        OrderEntity entity = toEntityDomain.toEntity(domain);
-        orderRepository.save(entity);
     }
 
     @Override
     public void saveStatus(OrderDomain domain) {
-        orderRepository.save(toEntityDomain.toEntity(domain));
     }
 
     @Override
     public void enrichDTO(List<OrderDTO> orderDTOList) {
         if (orderDTOList == null || orderDTOList.isEmpty()) return;
 
-        List <Integer> orderIds = orderDTOList.stream()
-                .map(OrderDTO ::getId)
+        List<Integer> orderIds = orderDTOList.stream()
+                .map(OrderDTO::getId)
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        List <OrderItemEntity> listEntity = orderItemRepository.findByOrderIdIn(orderIds);
-        List <OrderItemDTO> listDTO = mapperEntityToResponse.toOrderItemDTOs(listEntity);
+        List<OrderItemEntity> listEntity = orderItemRepository.findByOrderIdIn(orderIds);
+        List<OrderItemDTO> listDTO = mapperEntityToResponse.toOrderItemDTOs(listEntity);
 
 //        Map<Integer,List<OrderItemDTO>> groupsByOrderID = listDTO.stream()
 //                .collect(Collectors.groupingBy(OrderItemDTO :: getOrderID));
@@ -72,13 +66,13 @@ public class OrderDomainRepositoryImpl implements OrderDomainRepository {
 //        for (OrderDTO orderDTO : orderDTOList){
 //            List <OrderItemDTO> orderItemDTOS = groupsByOrderID.getOrDefault(orderDTO.getId(),List.of());
 //            orderDTO.setOrderItems(orderItemDTOS);
-        }
     }
+}
 //    // 1. Gom nhóm dữ liệu theo một khóa
 //    Map<K, List<V>> groupedMap = listV.stream()
 //            .collect(Collectors.groupingBy(V::getKey));
 //
-//// 2. Gắn dữ liệu nhóm lại vào danh sách đối tượng chính
+/// / 2. Gắn dữ liệu nhóm lại vào danh sách đối tượng chính
 //for (T item : listT) {
 //        List<V> relatedValues = groupedMap.getOrDefault(item.getKey(), List.of());
 //        item.setValues(relatedValues);
