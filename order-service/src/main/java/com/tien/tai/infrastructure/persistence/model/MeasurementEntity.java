@@ -21,15 +21,33 @@ public class MeasurementEntity extends Auditor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    // Các cột số đo (giữ nguyên tên cột trong DB)
+    @Column(name = "chest")
     Double chest;
+
+    @Column(name = "waist")
     Double waist;
+
+    @Column(name = "hips")
     Double hips;
+
+    @Column(name = "shoulder")
     Double shoulder;
+
+    @Column(name = "sleeve_length")
     Double sleeveLength;
+
+    @Column(name = "trouser_length")
     Double trouserLength;
 
+    // Cờ trạng thái
+    @Column(name = "status")
     Boolean status = true;
+
+    @Column(name = "is_deleted")
     Boolean isDeleted = false;
 
-    int orderId;
+    // Khóa ngoại về orders(id) – bạn đang map thủ công nên chỉ cần int/Integer + @Column
+    @Column(name = "order_id", nullable = false)
+    Integer orderId;
 }

@@ -15,3 +15,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+
+open:
+  api:
+    title: "CUSTOMER_SERVICE"
+    version: "v1.0.0"
+    description: "manage CUSTOMER, Address Of Customer"
+    url: "http://localhost:8082"
+    description-server-url: "server-dev"

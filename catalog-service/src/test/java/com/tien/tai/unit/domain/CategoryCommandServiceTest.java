@@ -27,10 +27,6 @@ class CategoryCommandServiceTest {
     @Mock
     private CategoryDomainRepository categoryDomainRepository;
     @Mock
-    private CategoryCommandMapper categoryCommandMapper;
-    @Mock
-    private ProductDomainRepository productDomainRepository;
-    @Mock
     private CategoryMapperDTO categoryMapperDTO;
     private Category mockCategory;
     @InjectMocks

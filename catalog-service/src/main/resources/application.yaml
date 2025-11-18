@@ -15,3 +15,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
+open:
+  api:
+    title: "CATALOG_SERVICE"
+    version: "v1.0.0"
+    description: "manage category, fabric, products"
+    url: "http://localhost:8081"
+    description-server-url: "server-dev"

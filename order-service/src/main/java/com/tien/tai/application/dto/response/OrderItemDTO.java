@@ -11,7 +11,7 @@ import lombok.experimental.FieldDefaults;
 
 public class OrderItemDTO {
     Integer id;
-    String productName;
+    Integer productId;
     Integer quantity;
     Double price;
     String fabricType;

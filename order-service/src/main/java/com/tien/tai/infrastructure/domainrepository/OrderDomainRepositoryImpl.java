@@ -73,8 +73,6 @@ public class OrderDomainRepositoryImpl implements OrderDomainRepository {
             List <OrderItemDTO> orderItemDTOS = groupsByOrderID.getOrDefault(orderDTO.getId(),List.of());
             orderDTO.setOrderItems(orderItemDTOS);
         }
-
-
     }
 //    // 1. Gom nhóm dữ liệu theo một khóa
 //    Map<K, List<V>> groupedMap = listV.stream()
